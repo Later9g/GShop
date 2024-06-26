@@ -8,7 +8,7 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<MainDbCont
 {
     public MainDbContext CreateDbContext(string[] args)
     {
-        var provider = (args?[0] ?? $"{DbType.MSSQL}").ToLower();
+        var provider = (args?[0] ?? $"{DbType.PgSql}").ToLower();
 
         var configuration = new ConfigurationBuilder()
             .AddJsonFile(Path.Combine(Directory.GetCurrentDirectory(), "appsettings.context.json"), false)

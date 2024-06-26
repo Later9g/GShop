@@ -5,7 +5,7 @@ using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 public static class DbContextOptionsFactory
 {
-    private const string migrationProjectPrefix = "NetSchool.Context.Migrations.";
+    private const string migrationProjectPrefix = "GShop.Context.Migrations.";
 
     public static DbContextOptions<MainDbContext> Create(string connStr, DbType dbType, bool detailedLogging = false)
     {

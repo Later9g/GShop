@@ -4,33 +4,27 @@ using GShop.Context.Entities;
 
 public class DemoHelper
 {
-    public IEnumerable<Book> GetBooks = new List<Book>
+
+    public IEnumerable<User> GetUsers = new List<User>
     {
-        new Book()
+        new User()
         {
             Uid = Guid.NewGuid(),
-            Title = "Harry Potter and the Philosopher's Stone",
-            Author = new Author()
+            Email = "user@mail.com",
+            FirstName = "TestUser",
+            CreatedGadgets = new List<Gadget>() 
             {
-                Uid = Guid.NewGuid(),
-                Name = "Joanne",  
-                Detail = new AuthorDetail()
+                new Gadget() 
                 {
-                    Country = "England",
-                    Family = "Rowling",
-                }
-            },
-            Categories = new List<Category>()
-            {
-                new Category()
-                {
-                    Title = "Child books",
-                },
-                new Category()
-                {
-                    Title = "Fantasy",
+                    Uid = Guid.NewGuid(),
+                    Name = "TestGadget",
+                    Details = new GadgetDetails() 
+                    {
+                        Price = 1,
+                        Description = "Cool Test Gadget"
+                    }
                 }
             }
-        },
+        }
     };
 }

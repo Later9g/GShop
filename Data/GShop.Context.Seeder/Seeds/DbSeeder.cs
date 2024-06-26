@@ -39,10 +39,10 @@ public static class DbSeeder
 
         await using var context = DbContext(serviceProvider);
 
-        if (await context.Books.AnyAsync())
+        if (await context.Gadgets.AnyAsync())
             return;
 
-        await context.Books.AddRangeAsync(new DemoHelper().GetBooks);
+        await context.Users.AddRangeAsync(new DemoHelper().GetUsers);
 
         await context.SaveChangesAsync();
     }
