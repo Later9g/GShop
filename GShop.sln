@@ -25,19 +25,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Services.Logger", "Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Services.Settings", "Services\GShop.Services.Settings\GShop.Services.Settings.csproj", "{DFFE761F-E0B1-4A76-A27A-84D3B8D5ACFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GShop.Context", "Data\GShop.Context\GShop.Context.csproj", "{B6E39722-F588-47FE-AB0B-825CF59D6880}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Context", "Data\GShop.Context\GShop.Context.csproj", "{B6E39722-F588-47FE-AB0B-825CF59D6880}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GShop.Context.Entities", "Data\GShop.Context.Entities\GShop.Context.Entities.csproj", "{C8428822-BC3C-41C0-AA57-AB0330E696B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Context.Entities", "Data\GShop.Context.Entities\GShop.Context.Entities.csproj", "{C8428822-BC3C-41C0-AA57-AB0330E696B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GShop.Context.Seeder", "Data\GShop.Context.Seeder\GShop.Context.Seeder.csproj", "{C0259389-D4ED-4B26-AE07-28E8D887A3EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Context.Seeder", "Data\GShop.Context.Seeder\GShop.Context.Seeder.csproj", "{C0259389-D4ED-4B26-AE07-28E8D887A3EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migrations", "Migrations", "{F70CBA29-8D4A-4142-8C9D-EAC2533D106D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GShop.Context.Migrations.PgSql", "Data\GShop.Context.Migrations\GShop.Context.Migrations.PgSql\GShop.Context.Migrations.PgSql.csproj", "{07968C59-63DF-41D9-8E50-130E0DF88816}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Context.Migrations.PgSql", "Data\GShop.Context.Migrations\GShop.Context.Migrations.PgSql\GShop.Context.Migrations.PgSql.csproj", "{07968C59-63DF-41D9-8E50-130E0DF88816}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GShop.Context.Migrations.MSSQL", "Data\GShop.Context.Migrations\GShop.Context.Migrations.MSSQL\GShop.Context.Migrations.MSSQL.csproj", "{BB3620C5-E789-4573-991B-DD975E6C12DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Context.Migrations.MSSQL", "Data\GShop.Context.Migrations\GShop.Context.Migrations.MSSQL\GShop.Context.Migrations.MSSQL.csproj", "{BB3620C5-E789-4573-991B-DD975E6C12DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GShop.Context.Migrations.MySql", "Data\GShop.Context.Migrations\GShop.Context.Migrations.MySql\GShop.Context.Migrations.MySql.csproj", "{9F06A607-2396-49D3-AA2C-4162FAFB6708}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Context.Migrations.MySql", "Data\GShop.Context.Migrations\GShop.Context.Migrations.MySql\GShop.Context.Migrations.MySql.csproj", "{9F06A607-2396-49D3-AA2C-4162FAFB6708}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gshop.Api.Settings", "Gshop.Api.Settings\Gshop.Api.Settings.csproj", "{4B759AB2-FBB8-4069-A224-CAB180602C5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +87,10 @@ Global
 		{9F06A607-2396-49D3-AA2C-4162FAFB6708}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F06A607-2396-49D3-AA2C-4162FAFB6708}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F06A607-2396-49D3-AA2C-4162FAFB6708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B759AB2-FBB8-4069-A224-CAB180602C5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B759AB2-FBB8-4069-A224-CAB180602C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B759AB2-FBB8-4069-A224-CAB180602C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B759AB2-FBB8-4069-A224-CAB180602C5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,6 +110,7 @@ Global
 		{07968C59-63DF-41D9-8E50-130E0DF88816} = {F70CBA29-8D4A-4142-8C9D-EAC2533D106D}
 		{BB3620C5-E789-4573-991B-DD975E6C12DD} = {F70CBA29-8D4A-4142-8C9D-EAC2533D106D}
 		{9F06A607-2396-49D3-AA2C-4162FAFB6708} = {F70CBA29-8D4A-4142-8C9D-EAC2533D106D}
+		{4B759AB2-FBB8-4069-A224-CAB180602C5A} = {3C6AF3EC-359E-461F-8DE6-A87D1BBF1244}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {24715852-D898-4D93-BFBE-C2FB244DE7E4}
