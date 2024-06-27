@@ -12,7 +12,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-    <ProjectReference Include="..\Services\GShop.Services.Settings\GShop.Services.Settings.csproj" />
-  </ItemGroup>
+	  <ProjectReference Include="..\..\..\Services\GShop.Services.Settings\GShop.Services.Settings.csproj" />
+	</ItemGroup>
+
 
 </Project>

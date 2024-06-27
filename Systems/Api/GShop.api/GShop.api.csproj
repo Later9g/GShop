@@ -29,10 +29,10 @@
     <ProjectReference Include="..\..\..\Data\GShop.Context.Migrations\GShop.Context.Migrations.PgSql\GShop.Context.Migrations.PgSql.csproj" />
     <ProjectReference Include="..\..\..\Data\GShop.Context.Seeder\GShop.Context.Seeder.csproj" />
     <ProjectReference Include="..\..\..\Data\GShop.Context\GShop.Context.csproj" />
-    <ProjectReference Include="..\..\..\Gshop.Api.Settings\Gshop.Api.Settings.csproj" />
     <ProjectReference Include="..\..\..\Services\GShop.Services.Logger\GShop.Services.Logger.csproj" />
     <ProjectReference Include="..\..\..\Services\GShop.Services.Settings\GShop.Services.Settings.csproj" />
     <ProjectReference Include="..\..\..\Shared\GShop.Common\GShop.Common.csproj" />
+    <ProjectReference Include="..\Gshop.Api.Settings\Gshop.Api.Settings.csproj" />
   </ItemGroup>
 
   <ItemGroup>
