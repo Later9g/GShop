@@ -67,8 +67,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                     Phone = table.Column<string>(type: "text", nullable: true),
                     Address = table.Column<string>(type: "text", nullable: true),
                     Age = table.Column<int>(type: "integer", nullable: true),
-                    FirstName = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
-                    LastName = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: true),
+                    Username = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
                     Uid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>

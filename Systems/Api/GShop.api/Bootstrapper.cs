@@ -1,6 +1,7 @@
 ﻿namespace GShop.Api;
 
 using GShop.Api.Settings;
+using GShop.Services.Gadgets;
 using GShop.Context.Seeder;
 using GShop.Services.Logger;
 using GShop.Services.Settings;
@@ -16,6 +17,7 @@ public static class Bootstrapper
             .AddAppLogger()
             .AddDbSeeder()
             .AddApiSpecialSettings()
+            .AddGadgetService()
             ;
 
         return service;

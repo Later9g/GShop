@@ -6,8 +6,7 @@ public class User : BaseEntity
     public string? Phone { get; set; } 
     public string? Address { get; set; } 
     public int? Age { get; set; }
-    public required string FirstName { get; set; } 
-    public string? LastName { get; set; } 
+    public required string Username { get; set; } 
 
     public virtual ICollection<Gadget>? CreatedGadgets { get; set;} 
     public virtual ICollection<Gadget>? LikedGadgets { get; set;}

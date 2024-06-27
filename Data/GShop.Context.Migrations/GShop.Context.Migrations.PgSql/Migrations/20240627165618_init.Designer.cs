@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GShop.Context.Migrations.PgSql.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    [Migration("20240626122747_init")]
+    [Migration("20240627165618_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -313,20 +313,16 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("character varying(10)");
-
-                    b.Property<string>("LastName")
-                        .HasMaxLength(10)
-                        .HasColumnType("character varying(10)");
-
                     b.Property<string>("Phone")
                         .HasColumnType("text");
 
                     b.Property<Guid>("Uid")
                         .HasColumnType("uuid");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)");
 
                     b.HasKey("Id");
 

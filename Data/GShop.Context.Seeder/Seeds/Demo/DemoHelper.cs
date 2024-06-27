@@ -13,9 +13,7 @@ public class DemoHelper
             Uid = Guid.NewGuid(),
             Email = "testUser@mail.com",
             Phone = "8 800 555 35 35",
-            //Address = "TestAddress",
-            FirstName = "TestFirst",
-            //LastName = "TestLast",
+            Username = "TestName",
             CreatedGadgets = new List<Gadget>() 
             {
                 new Gadget() 
@@ -32,6 +30,10 @@ public class DemoHelper
                         new Category() 
                         {
                             Title = "TestCategory",
+                        },
+                        new Category()
+                        {
+                            Title = "TestCategory2",
                         }
                     }
                 }
