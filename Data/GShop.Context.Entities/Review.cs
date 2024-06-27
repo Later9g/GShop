@@ -3,13 +3,13 @@
 public class Review :BaseEntity
 {
     public int UserId { get; set; }
-    public virtual User User { get; set; } = default!;
+    public virtual User User { get; set; } 
 
     public int GadgetId { get; set; }
-    public virtual Gadget Gadget { get; set; } = default!;
+    public virtual Gadget Gadget { get; set; } 
 
     public int Rating { get; set; }
-    public string Comment { get; set; } = default!;
+    public string? Comment { get; set; } 
     public bool IsLiked { get; set; }
 }
 

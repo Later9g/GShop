@@ -1,6 +1,7 @@
 using GShop.Api;
 using GShop.Api.Configuration;
 using GShop.Context;
+using GShop.Context.Seeder;
 using GShop.Services.Logger;
 using GShop.Services.Settings;
 using GShop.Settings;
@@ -25,8 +26,8 @@ services.AddAppControllerAndViews();
 services.AddAppHealthChecks();
 services.AddAppVersioning();
 services.AddAppSwagger(mainSetting,swaggerSettings);
-services.RegisterServices(builder.Configuration);
 
+services.RegisterServices(builder.Configuration);
 var app = builder.Build();
 
 app.UseAppSwagger();
@@ -35,4 +36,6 @@ app.UseAppControllerAndViews();
 app.UseAppHealthChecks();
 
 DbInitializer.Execute(app.Services);
+DbSeeder.Execute(app.Services);
+
 app.Run();

@@ -2,6 +2,6 @@
 
 public class Category : BaseEntity
 {
-    public string Title { get; set; } = default!;
-    public virtual ICollection<Gadget> Gadgets { get; set; } = default!;
+    public string Title { get; set; }
+    public virtual ICollection<Gadget>? Gadgets { get; set; }
 }

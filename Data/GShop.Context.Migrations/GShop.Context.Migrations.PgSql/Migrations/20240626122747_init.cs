@@ -32,7 +32,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Description = table.Column<string>(type: "character varying(300)", maxLength: 300, nullable: false),
+                    Description = table.Column<string>(type: "character varying(300)", maxLength: 300, nullable: true),
                     Price = table.Column<double>(type: "double precision", nullable: false),
                     Star = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
                     Sales = table.Column<double>(type: "double precision", nullable: false, defaultValue: 0.0),
@@ -64,11 +64,11 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Email = table.Column<string>(type: "text", nullable: false),
-                    Phone = table.Column<string>(type: "text", nullable: false),
-                    Address = table.Column<string>(type: "text", nullable: false),
-                    Age = table.Column<int>(type: "integer", nullable: false),
+                    Phone = table.Column<string>(type: "text", nullable: true),
+                    Address = table.Column<string>(type: "text", nullable: true),
+                    Age = table.Column<int>(type: "integer", nullable: true),
                     FirstName = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
-                    LastName = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
+                    LastName = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: true),
                     Uid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
@@ -82,7 +82,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false),
                     Name = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
-                    UserId = table.Column<int>(type: "integer", nullable: false),
+                    CreatorId = table.Column<int>(type: "integer", nullable: false),
                     Uid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
@@ -95,8 +95,8 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_gadgets_users_UserId",
-                        column: x => x.UserId,
+                        name: "FK_gadgets_users_CreatorId",
+                        column: x => x.CreatorId,
                         principalTable: "users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -110,7 +110,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<int>(type: "integer", nullable: false),
                     StatusId = table.Column<int>(type: "integer", nullable: false),
-                    Note = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Note = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     Total = table.Column<double>(type: "double precision", nullable: false),
                     Uid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
@@ -132,7 +132,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "GadgetUser",
+                name: "followers",
                 columns: table => new
                 {
                     FollowersId = table.Column<int>(type: "integer", nullable: false),
@@ -140,15 +140,15 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GadgetUser", x => new { x.FollowersId, x.LikedGadgetsId });
+                    table.PrimaryKey("PK_followers", x => new { x.FollowersId, x.LikedGadgetsId });
                     table.ForeignKey(
-                        name: "FK_GadgetUser_gadgets_LikedGadgetsId",
+                        name: "FK_followers_gadgets_LikedGadgetsId",
                         column: x => x.LikedGadgetsId,
                         principalTable: "gadgets",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_GadgetUser_users_FollowersId",
+                        name: "FK_followers_users_FollowersId",
                         column: x => x.FollowersId,
                         principalTable: "users",
                         principalColumn: "Id",
@@ -260,11 +260,6 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_GadgetUser_LikedGadgetsId",
-                table: "GadgetUser",
-                column: "LikedGadgetsId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_OrderGadgets_GadgetId",
                 table: "OrderGadgets",
                 column: "GadgetId");
@@ -287,6 +282,11 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_followers_LikedGadgetsId",
+                table: "followers",
+                column: "LikedGadgetsId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_gadget_categories_GadgetsId",
                 table: "gadget_categories",
                 column: "GadgetsId");
@@ -295,6 +295,11 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 name: "IX_gadget_images_GadgetId",
                 table: "gadget_images",
                 column: "GadgetId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_gadgets_CreatorId",
+                table: "gadgets",
+                column: "CreatorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_gadgets_Name",
@@ -307,11 +312,6 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 table: "gadgets",
                 column: "Uid",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_gadgets_UserId",
-                table: "gadgets",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_order_statuses_Uid",
@@ -363,10 +363,10 @@ namespace GShop.Context.Migrations.PgSql.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "GadgetUser");
+                name: "OrderGadgets");
 
             migrationBuilder.DropTable(
-                name: "OrderGadgets");
+                name: "followers");
 
             migrationBuilder.DropTable(
                 name: "gadget_categories");

@@ -6,9 +6,9 @@ public class GadgetDetails
 {
     [Key]
     public int Id { get; set; }
-    public virtual Gadget Gadget { get; set; } = default!;
+    public virtual  Gadget Gadget { get; set; } 
 
-    public string Description { get; set; } = default!;
+    public string? Description { get; set; }
     public double Price { get; set; }
     public int Star { get; set; }
     public double Sales { get; set; }

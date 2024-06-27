@@ -70,6 +70,9 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
+                    b.Property<int>("CreatorId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -78,18 +81,15 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                     b.Property<Guid>("Uid")
                         .HasColumnType("uuid");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("CreatorId");
 
                     b.HasIndex("Name")
                         .IsUnique();
 
                     b.HasIndex("Uid")
                         .IsUnique();
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("gadgets", (string)null);
                 });
@@ -103,7 +103,6 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(300)
                         .HasColumnType("character varying(300)");
 
@@ -161,7 +160,6 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Note")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
@@ -303,10 +301,9 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("Age")
+                    b.Property<int?>("Age")
                         .HasColumnType("integer");
 
                     b.Property<string>("Email")
@@ -319,12 +316,10 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                         .HasColumnType("character varying(10)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("character varying(10)");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<Guid>("Uid")
@@ -350,7 +345,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
 
                     b.HasIndex("LikedGadgetsId");
 
-                    b.ToTable("GadgetUser");
+                    b.ToTable("followers", (string)null);
                 });
 
             modelBuilder.Entity("CategoryGadget", b =>
@@ -370,21 +365,21 @@ namespace GShop.Context.Migrations.PgSql.Migrations
 
             modelBuilder.Entity("GShop.Context.Entities.Gadget", b =>
                 {
+                    b.HasOne("GShop.Context.Entities.User", "Creator")
+                        .WithMany("CreatedGadgets")
+                        .HasForeignKey("CreatorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("GShop.Context.Entities.GadgetDetails", "Details")
                         .WithOne("Gadget")
                         .HasForeignKey("GShop.Context.Entities.Gadget", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GShop.Context.Entities.User", "User")
-                        .WithMany("CreatedGadgets")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Creator");
 
                     b.Navigation("Details");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("GShop.Context.Entities.GadgetImage", b =>

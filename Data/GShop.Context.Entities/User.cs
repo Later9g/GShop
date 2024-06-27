@@ -2,17 +2,17 @@
 
 public class User : BaseEntity
 {
-    public string Email { get; set; } = default!;
-    public string Phone { get; set; } = default!;
-    public string Address { get; set; } = default!;
-    public int Age { get; set; }
-    public string FirstName { get; set; } = default!;
-    public string LastName { get; set; } = default!;
+    public required string Email { get; set; }
+    public string? Phone { get; set; } 
+    public string? Address { get; set; } 
+    public int? Age { get; set; }
+    public required string FirstName { get; set; } 
+    public string? LastName { get; set; } 
 
-    public virtual ICollection<Gadget> CreatedGadgets { get; set;} = default!;
-    public virtual ICollection<Gadget> LikedGadgets { get; set;} = default!;
-    public virtual ICollection<Review> Reviews { get; set;} = default!;
-    public virtual ICollection<Order> Orders { get; set;} = default!;
+    public virtual ICollection<Gadget>? CreatedGadgets { get; set;} 
+    public virtual ICollection<Gadget>? LikedGadgets { get; set;}
+    public virtual ICollection<Review>? Reviews { get; set;} 
+    public virtual ICollection<Order>? Orders { get; set;} 
 
 }
 

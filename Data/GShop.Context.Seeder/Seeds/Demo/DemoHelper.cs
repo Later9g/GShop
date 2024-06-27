@@ -1,6 +1,7 @@
 ﻿namespace GShop.Context.Seeder;
 
 using GShop.Context.Entities;
+using System.Net;
 
 public class DemoHelper
 {
@@ -10,8 +11,11 @@ public class DemoHelper
         new User()
         {
             Uid = Guid.NewGuid(),
-            Email = "user@mail.com",
-            FirstName = "TestUser",
+            Email = "testUser@mail.com",
+            Phone = "8 800 555 35 35",
+            //Address = "TestAddress",
+            FirstName = "TestFirst",
+            //LastName = "TestLast",
             CreatedGadgets = new List<Gadget>() 
             {
                 new Gadget() 
@@ -22,8 +26,16 @@ public class DemoHelper
                     {
                         Price = 1,
                         Description = "Cool Test Gadget"
+                    },
+                    Categories = new List<Category>()
+                    {
+                        new Category() 
+                        {
+                            Title = "TestCategory",
+                        }
                     }
                 }
+
             }
         }
     };

@@ -27,6 +27,7 @@
     <ProjectReference Include="..\..\..\Data\GShop.Context.Migrations\GShop.Context.Migrations.MSSQL\GShop.Context.Migrations.MSSQL.csproj" />
     <ProjectReference Include="..\..\..\Data\GShop.Context.Migrations\GShop.Context.Migrations.MySql\GShop.Context.Migrations.MySql.csproj" />
     <ProjectReference Include="..\..\..\Data\GShop.Context.Migrations\GShop.Context.Migrations.PgSql\GShop.Context.Migrations.PgSql.csproj" />
+    <ProjectReference Include="..\..\..\Data\GShop.Context.Seeder\GShop.Context.Seeder.csproj" />
     <ProjectReference Include="..\..\..\Data\GShop.Context\GShop.Context.csproj" />
     <ProjectReference Include="..\..\..\Services\GShop.Services.Logger\GShop.Services.Logger.csproj" />
     <ProjectReference Include="..\..\..\Services\GShop.Services.Settings\GShop.Services.Settings.csproj" />

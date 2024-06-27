@@ -11,7 +11,7 @@ public static class GadgetContextConfiguration
         modelBuilder.Entity<Gadget>().Property(x => x.Name).IsRequired();
         modelBuilder.Entity<Gadget>().Property(x => x.Name).HasMaxLength(20);
         modelBuilder.Entity<Gadget>().HasIndex(x => x.Name).IsUnique();
-        modelBuilder.Entity<Gadget>().HasOne(x => x.User).WithMany(x => x.CreatedGadgets);
-        modelBuilder.Entity<Gadget>().HasMany(x => x.Followers).WithMany(x => x.LikedGadgets);
+        modelBuilder.Entity<Gadget>().HasOne(x => x.Creator).WithMany(x => x.CreatedGadgets);
+        modelBuilder.Entity<Gadget>().HasMany(x => x.Followers).WithMany(x => x.LikedGadgets).UsingEntity(x => x.ToTable("followers"));
     }
 }

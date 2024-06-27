@@ -1,5 +1,6 @@
 ﻿namespace GShop.Api;
 
+using GShop.Context.Seeder;
 using GShop.Services.Logger;
 using GShop.Services.Settings;
 

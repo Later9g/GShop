@@ -2,17 +2,17 @@
 
 public class Gadget : BaseEntity
 {
-    public string Name { get; set; } = default!; 
-    public int UserId { get; set; }
-    public virtual User User { get; set; } = default!;
+    public required string Name { get; set; } 
+    public int CreatorId { get; set; }
+    public virtual User Creator { get; set; } 
 
-    public virtual GadgetDetails Details { get; set; } = default!;
+    public virtual GadgetDetails? Details { get; set; }
 
-    public virtual ICollection<User> Followers { get; set; } = default!;
-    public virtual ICollection<Category> Categories { get; set; } = default!;
-    public virtual ICollection<GadgetImage> Images { get; set; } = default!;
-    public virtual ICollection<OrderGadget> OrderGadgets { get; set; } = default!;
-    public virtual ICollection<Review> Reviews { get; set; } = default!;
+    public virtual ICollection<User>? Followers { get; set; }
+    public virtual ICollection<Category>? Categories { get; set; }
+    public virtual ICollection<GadgetImage>? Images { get; set; } 
+    public virtual ICollection<OrderGadget>? OrderGadgets { get; set; } 
+    public virtual ICollection<Review>? Reviews { get; set; }
 }
 
 // user_id count(reviews) avg(rating) images description
