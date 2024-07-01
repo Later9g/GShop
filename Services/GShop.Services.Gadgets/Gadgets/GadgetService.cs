@@ -1,4 +1,5 @@
 ﻿using GShop.Context;
+using GShop.Context.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace GShop.Services.Gadgets;
@@ -33,7 +34,7 @@ internal class GadgetService : IGadgetService
             Stock = x.Details.Stock,
             Categories = x.Categories.Select(s => s.Title),
             Rating = gadgets.Where(g => g.Uid == x.Uid).SelectMany(g => g.Reviews).Any() ? 
-            gadgets.Where(g => g.Uid == x.Uid).SelectMany(g => g.Reviews).Average(r => r.Rating) : 0
+            gadgets.Where(g => g.Uid == x.Uid).SelectMany(g => g.Reviews).Average(r => r.Rating) : 0.0
 
         });
 

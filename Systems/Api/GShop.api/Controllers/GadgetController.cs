@@ -1,11 +1,11 @@
-﻿namespace GShop.Api.App;
-
+﻿
 using Asp.Versioning;
-using GShop.Services.Gadgets;
-using Microsoft.AspNetCore.Mvc;
+using GShop.api.Controllers;
 using GShop.Services.Gadgets;
 using GShop.Services.Logger;
+using Microsoft.AspNetCore.Mvc;
 
+namespace GShop.Api.App;
 [ApiController]
 [ApiVersion("1.0")]
 [ApiExplorerSettings(GroupName = "Product")]
@@ -14,17 +14,21 @@ public class GadgetController : ControllerBase
 {
     private readonly IAppLogger logger;
     private readonly IGadgetService gadgetService;
+    private readonly IGadgetViewService gadgetViewService;
 
-    public GadgetController(IAppLogger logger, IGadgetService gadgetService)
+    public GadgetController(IAppLogger logger, IGadgetService gadgetService,IGadgetViewService gadgetViewService)
     {
         this.logger = logger;
         this.gadgetService = gadgetService;
+        this.gadgetViewService = gadgetViewService;
     }
 
     [HttpGet("")]
-    public async Task<IEnumerable<GadgetModel>> GetAll()
+    public async Task<IEnumerable<GadgetResponceModel>> GetAll()
     {
-        var result = await gadgetService.GetAll();
+        var businessModels = await gadgetService.GetAll();
+
+        var result = businessModels.Select(model => gadgetViewService.GadgetModelToGadgetResponceModel(model));
 
         return result;
     }
@@ -32,30 +36,39 @@ public class GadgetController : ControllerBase
     [HttpGet("{id:Guid}")]
     public async Task<IActionResult> Get([FromRoute] Guid id)
     {
-        var result = await gadgetService.GetById(id);
+        var businessModel = await gadgetService.GetById(id);
 
-        if (result == null)
+        if (businessModel == null)
             return NotFound();
+
+        var result = gadgetViewService.GadgetModelToGadgetResponceModel(businessModel);
 
         return Ok(result);
     }
 
     [HttpPost("")]
-    public async Task<GadgetModel> Create(CreateGadgetModel request)
+    public async Task<GadgetResponceModel> Create(CreateGadgetRequestModel viewRequest)
     {
-        var result = await gadgetService.Create(request);
+
+        var request = gadgetViewService.CreateGadgetRequestModelToCreateGadgetModel(viewRequest);
+
+        var businessModel = await gadgetService.Create(request); // return null LOL
+
+        var result = gadgetViewService.GadgetModelToGadgetResponceModel(businessModel);
 
         return result;
+
     }
 
     [HttpPut("{id:Guid}")]
-    public async Task Update([FromRoute] Guid id, UpdateGadgetModel request)
+    public async Task Update([FromRoute] Guid id, UpdateGadgetRequestModel request) // return null
     {
-        await gadgetService.Update(id, request);
+        await gadgetService.Update(id,
+            gadgetViewService.UpdateGadgetRequestModelToUpdateGadgetModel(request));
     }
 
     [HttpDelete("{id:Guid}")]
-    public async Task Delete([FromRoute] Guid id)
+    public async Task Delete([FromRoute] Guid id) //return null
     {
         await gadgetService.Delete(id);
     }
