@@ -18,7 +18,7 @@ public static class Bootstrapper
             .AddDbSeeder()
             .AddApiSpecialSettings()
             .AddGadgetService()
-            .AddGadgetViewService()
+            .AddGadgetViewMapper()
             ;
 
         return service;

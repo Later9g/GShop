@@ -31,7 +31,7 @@ static public class GadgetMapper
             CreatorId = gadget.Creator.Uid,
             Price = gadget.Details.Price,
             Stock = gadget.Details.Stock,
-            Rating = gadget.Reviews != null ? gadget.Reviews.Average(r => r.Rating) : 0.0,
+            Rating = gadget.Reviews.Any() ? gadget.Reviews.Average(r => r.Rating) : 0.0,
             Categories = gadget.Categories.Select(s => s.Title)
 
         };

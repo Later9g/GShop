@@ -14,9 +14,9 @@ public class GadgetController : ControllerBase
 {
     private readonly IAppLogger logger;
     private readonly IGadgetService gadgetService;
-    private readonly IGadgetViewService gadgetViewService;
+    private readonly IGadgetViewMapper gadgetViewService;
 
-    public GadgetController(IAppLogger logger, IGadgetService gadgetService,IGadgetViewService gadgetViewService)
+    public GadgetController(IAppLogger logger, IGadgetService gadgetService,IGadgetViewMapper gadgetViewService)
     {
         this.logger = logger;
         this.gadgetService = gadgetService;

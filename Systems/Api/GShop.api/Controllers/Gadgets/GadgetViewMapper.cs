@@ -2,10 +2,10 @@
 using GShop.Common.Constants;
 namespace GShop.api.Controllers;
 
-internal  class GadgetViewService : IGadgetViewService
+internal  class GadgetViewMapper : IGadgetViewMapper
 {
 
-    public GadgetViewService()
+    public GadgetViewMapper()
     {
     }
     public GadgetResponceModel GadgetModelToGadgetResponceModel(GadgetModel gadgetModel)

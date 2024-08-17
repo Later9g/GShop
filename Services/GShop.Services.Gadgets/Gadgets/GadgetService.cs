@@ -1,11 +1,7 @@
-﻿using AutoMapper;
-using AutoMapper.Configuration.Annotations;
-using GShop.Common.Exceptions;
+﻿using GShop.Common.Exceptions;
 using GShop.Context;
 using GShop.Context.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using static System.Collections.Specialized.BitVector32;
 
 namespace GShop.Services.Gadgets;
 

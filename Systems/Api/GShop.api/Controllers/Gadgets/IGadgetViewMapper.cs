@@ -2,7 +2,7 @@
 
 namespace GShop.api.Controllers;
 
-public interface IGadgetViewService
+public interface IGadgetViewMapper
 {
     public GadgetResponceModel GadgetModelToGadgetResponceModel(GadgetModel gadgetModel);
 
