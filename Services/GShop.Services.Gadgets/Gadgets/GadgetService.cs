@@ -1,4 +1,5 @@
 ﻿using GShop.Common.Exceptions;
+using GShop.Common.Validator;
 using GShop.Context;
 using GShop.Context.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -28,7 +29,7 @@ internal class GadgetService : IGadgetService
         var result = gadgets.Select(x => new GadgetModel()
         {
             Id = x.Uid,
-            Name = x.Name,
+            Title = x.Name,
             CreatorName = x.Creator.Username,
             CreatorId = x.Creator.Uid,
             Price = x.Details.Price,
@@ -64,8 +65,6 @@ internal class GadgetService : IGadgetService
     }
     public async Task<GadgetModel> Create(CreateGadgetModel model)
     {
-        //await createModelValidator.CheckAsync(model);
-
         using var context = await dbContextFactory.CreateDbContextAsync();
 
         //var user = await context.Users.Where(x => x.Uid == model.CreatorId).FirstAsync();
@@ -80,7 +79,7 @@ internal class GadgetService : IGadgetService
         var gadget = new Gadget()
         {
             Uid = Guid.NewGuid(),
-            Name = model.Name,
+            Name = model.Title,
             CreatorId = user.Id,
             Creator = user,
             Details = new GadgetDetails()
@@ -104,7 +103,7 @@ internal class GadgetService : IGadgetService
         var result = new GadgetModel()
         {
             Id = gadget.Uid,
-            Name = gadget.Name,
+            Title = gadget.Name,
             CreatorName = gadget.Creator.Username,
             CreatorId = gadget.Creator.Uid,
             Price = gadget.Details.Price,
@@ -117,8 +116,6 @@ internal class GadgetService : IGadgetService
     }
     public async Task Update(Guid id, UpdateGadgetModel model)
     {
-        //await updateModelValidator.CheckAsync(model);
-
         using var context = await dbContextFactory.CreateDbContextAsync();
 
         var gadget = await context.Gadgets
@@ -126,7 +123,7 @@ internal class GadgetService : IGadgetService
             .SingleOrDefaultAsync(x => x.Uid == id);
 
 
-        gadget.Name = model.Name;
+        gadget.Name = model.Title;
         gadget.Details.Description = model.Description;
         gadget.Details.Stock = model.Stock;
         gadget.Details.Price = model.Price;

@@ -9,7 +9,7 @@ public class GadgetModel
     public Guid CreatorId { get; set; }
     public string CreatorName { get; set; }
 
-    public string Name { get; set; }
+    public string Title { get; set; }
     public string? Description { get; set; }
     public double Price { get; set; }
     public int Stock { get; set; }
@@ -26,7 +26,7 @@ static public class GadgetMapper
         var result = new GadgetModel()
         {
             Id = gadget.Uid,
-            Name = gadget.Name,
+            Title = gadget.Name,
             CreatorName = gadget.Creator.Username,
             CreatorId = gadget.Creator.Uid,
             Price = gadget.Details.Price,

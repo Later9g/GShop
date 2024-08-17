@@ -1,6 +1,7 @@
-﻿
+﻿    
 using Asp.Versioning;
 using GShop.api.Controllers;
+using GShop.Common.Validator;
 using GShop.Services.Gadgets;
 using GShop.Services.Logger;
 using Microsoft.AspNetCore.Mvc;
@@ -15,12 +16,18 @@ public class GadgetController : ControllerBase
     private readonly IAppLogger logger;
     private readonly IGadgetService gadgetService;
     private readonly IGadgetViewMapper gadgetViewService;
+    private readonly IModelValidator<UpdateGadgetRequestModel> updateGadgetRequestModelValidator;
+    private readonly IModelValidator<CreateGadgetRequestModel> createGadgetRequestModellValidator;
 
-    public GadgetController(IAppLogger logger, IGadgetService gadgetService,IGadgetViewMapper gadgetViewService)
+    public GadgetController(IAppLogger logger, IGadgetService gadgetService,IGadgetViewMapper gadgetViewService,
+        IModelValidator<CreateGadgetRequestModel> createGadgetRequestModellValidator,
+        IModelValidator<UpdateGadgetRequestModel> updateGadgetRequestModelValidator)
     {
         this.logger = logger;
         this.gadgetService = gadgetService;
         this.gadgetViewService = gadgetViewService;
+        this.createGadgetRequestModellValidator = createGadgetRequestModellValidator;
+        this.updateGadgetRequestModelValidator = updateGadgetRequestModelValidator;
     }
 
     [HttpGet("")]
@@ -50,6 +57,8 @@ public class GadgetController : ControllerBase
     public async Task<GadgetResponceModel> Create(CreateGadgetRequestModel viewRequest)
     {
 
+        await createGadgetRequestModellValidator.CheckAsync(viewRequest);
+
         var request = gadgetViewService.CreateGadgetRequestModelToCreateGadgetModel(viewRequest);
 
         var businessModel = await gadgetService.Create(request);
@@ -63,6 +72,8 @@ public class GadgetController : ControllerBase
     [HttpPut("{id:Guid}")]
     public async Task Update([FromRoute] Guid id, UpdateGadgetRequestModel request)
     {
+        await updateGadgetRequestModelValidator.CheckAsync(request);
+
         await gadgetService.Update(id,
             gadgetViewService.UpdateGadgetRequestModelToUpdateGadgetModel(request));
     }

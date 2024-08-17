@@ -41,7 +41,7 @@ internal  class GadgetViewMapper : IGadgetViewMapper
         var result = new GadgetResponceModel()
         {
             Id = gadgetModel.Id,
-            Name = gadgetModel.Name,
+            Title = gadgetModel.Title,
             CreatorName = gadgetModel.CreatorName,
             CreatorId = gadgetModel.CreatorId,
             Description = gadgetModel.Description,
@@ -59,7 +59,7 @@ internal  class GadgetViewMapper : IGadgetViewMapper
         var result = new CreateGadgetModel()
         {
             CreatorId = createGadgetModel.CreatorId,
-            Name = createGadgetModel.Name,
+            Title = createGadgetModel.Title,
             Description = createGadgetModel.Description,
             Price = createGadgetModel.Price,
         };
@@ -71,7 +71,7 @@ internal  class GadgetViewMapper : IGadgetViewMapper
     {
         var result = new UpdateGadgetModel()
         {
-            Name = updateGadgetRequestModel.Name,
+            Title = updateGadgetRequestModel.Title,
             Description = updateGadgetRequestModel.Description,
             Price = updateGadgetRequestModel.Price,
             Stock = updateGadgetRequestModel.Stock,

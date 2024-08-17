@@ -6,7 +6,7 @@ public class GadgetResponceModel
     public Guid CreatorId { get; set; }
     public string CreatorName { get; set; }
 
-    public string Name { get; set; }
+    public string Title { get; set; }
     public string? Description { get; set; }
     public double Price { get; set; }
     public double Rating { get; set; }
