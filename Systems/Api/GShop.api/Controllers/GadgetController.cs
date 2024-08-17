@@ -52,7 +52,7 @@ public class GadgetController : ControllerBase
 
         var request = gadgetViewService.CreateGadgetRequestModelToCreateGadgetModel(viewRequest);
 
-        var businessModel = await gadgetService.Create(request); // return null LOL
+        var businessModel = await gadgetService.Create(request);
 
         var result = gadgetViewService.GadgetModelToGadgetResponceModel(businessModel);
 
@@ -61,14 +61,14 @@ public class GadgetController : ControllerBase
     }
 
     [HttpPut("{id:Guid}")]
-    public async Task Update([FromRoute] Guid id, UpdateGadgetRequestModel request) // return null
+    public async Task Update([FromRoute] Guid id, UpdateGadgetRequestModel request)
     {
         await gadgetService.Update(id,
             gadgetViewService.UpdateGadgetRequestModelToUpdateGadgetModel(request));
     }
 
     [HttpDelete("{id:Guid}")]
-    public async Task Delete([FromRoute] Guid id) //return null
+    public async Task Delete([FromRoute] Guid id)
     {
         await gadgetService.Delete(id);
     }

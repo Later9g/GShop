@@ -11,14 +11,10 @@ internal  class GadgetViewService : IGadgetViewService
     public GadgetResponceModel GadgetModelToGadgetResponceModel(GadgetModel gadgetModel)
     {
         
-        string Stock;
+        string Stock = "Unavailable";
 
 
-        if (gadgetModel == null)
-        {
-            Stock = "Unavailable";
-        }
-        else
+        if (gadgetModel != null)
         {
             if (gadgetModel.Stock == (int)GadgetStockCutoffs.OutGadgetStock)
             {

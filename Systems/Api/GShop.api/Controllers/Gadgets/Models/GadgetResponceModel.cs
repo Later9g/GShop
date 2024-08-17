@@ -11,4 +11,5 @@ public class GadgetResponceModel
     public double Price { get; set; }
     public double Rating { get; set; }
     public string Stock {  get; set; }
+    public IEnumerable<string> Categories { get; set; }
 }
