@@ -80,7 +80,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false),
-                    Name = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    Title = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
                     CreatorId = table.Column<int>(type: "integer", nullable: false),
                     Uid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
@@ -301,9 +301,9 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 column: "CreatorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_gadgets_Name",
+                name: "IX_gadgets_Title",
                 table: "gadgets",
-                column: "Name",
+                column: "Title",
                 unique: true);
 
             migrationBuilder.CreateIndex(

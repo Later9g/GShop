@@ -29,7 +29,7 @@ internal class GadgetService : IGadgetService
         var result = gadgets.Select(x => new GadgetModel()
         {
             Id = x.Uid,
-            Title = x.Name,
+            Title = x.Title,
             CreatorName = x.Creator.Username,
             CreatorId = x.Creator.Uid,
             Price = x.Details.Price,
@@ -79,7 +79,7 @@ internal class GadgetService : IGadgetService
         var gadget = new Gadget()
         {
             Uid = Guid.NewGuid(),
-            Name = model.Title,
+            Title = model.Title,
             CreatorId = user.Id,
             Creator = user,
             Details = new GadgetDetails()
@@ -103,7 +103,7 @@ internal class GadgetService : IGadgetService
         var result = new GadgetModel()
         {
             Id = gadget.Uid,
-            Title = gadget.Name,
+            Title = gadget.Title,
             CreatorName = gadget.Creator.Username,
             CreatorId = gadget.Creator.Uid,
             Price = gadget.Details.Price,
@@ -123,7 +123,7 @@ internal class GadgetService : IGadgetService
             .SingleOrDefaultAsync(x => x.Uid == id);
 
 
-        gadget.Name = model.Title;
+        gadget.Title = model.Title;
         gadget.Details.Description = model.Description;
         gadget.Details.Stock = model.Stock;
         gadget.Details.Price = model.Price;

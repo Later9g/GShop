@@ -1,6 +1,6 @@
-﻿using AutoMapper;
-using FluentValidation;
+﻿using FluentValidation;
 using GShop.Context;
+using GShop.Settings;
 using Microsoft.EntityFrameworkCore;
 
 namespace GShop.Services.Gadgets;
@@ -20,11 +20,7 @@ public class CreateGadgetModelValidator : AbstractValidator<CreateGadgetModel>
     public CreateGadgetModelValidator(IDbContextFactory<MainDbContext> contextFactory)
     {
 
-        //RuleFor(x => x.Title).GadgetTitle();
-        
-        RuleFor(x => x.Title).NotEmpty().WithMessage("Title is required")
-            .MinimumLength(1).WithMessage("Minimum lenght is 1")
-            .MaximumLength(100).WithMessage("Maximum lenght is 100");
+        RuleFor(x => x.Title).GadgetTitle();
 
         RuleFor(x => x.CreatorId)
             .NotEmpty().WithMessage("User is required")
@@ -35,10 +31,8 @@ public class CreateGadgetModelValidator : AbstractValidator<CreateGadgetModel>
                 return found;
             }).WithMessage("User not found");
 
-        RuleFor(x => x.Description)
-            .MaximumLength(1000).WithMessage("Maximum length is 1000");
+        RuleFor(x => x.Description).GadgetDescription();
 
-        RuleFor(x => x.Price).NotEmpty().WithMessage("Price cannot be empty")
-            .GreaterThan(0).WithMessage("Price cannot be lower than 0");
+        RuleFor(x => x.Price).GadgetPrice();
     }
 }

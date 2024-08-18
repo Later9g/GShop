@@ -2,7 +2,7 @@
 
 public class Gadget : BaseEntity
 {
-    public required string Name { get; set; } 
+    public required string Title { get; set; } 
     public int CreatorId { get; set; }
     public virtual User Creator { get; set; } 
 

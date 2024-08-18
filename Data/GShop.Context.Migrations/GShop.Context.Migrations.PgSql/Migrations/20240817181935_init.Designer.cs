@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GShop.Context.Migrations.PgSql.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    [Migration("20240705143408_init")]
+    [Migration("20240817181935_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -76,7 +76,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                     b.Property<int>("CreatorId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("character varying(20)");
@@ -88,7 +88,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
 
                     b.HasIndex("CreatorId");
 
-                    b.HasIndex("Name")
+                    b.HasIndex("Title")
                         .IsUnique();
 
                     b.HasIndex("Uid")

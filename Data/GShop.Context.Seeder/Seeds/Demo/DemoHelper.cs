@@ -19,7 +19,7 @@ public class DemoHelper
                 new Gadget() 
                 {
                     Uid = Guid.NewGuid(),
-                    Name = "TestGadget",
+                    Title = "TestGadget",
                     Details = new GadgetDetails() 
                     {
                         Price = 1,

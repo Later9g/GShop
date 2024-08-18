@@ -26,7 +26,7 @@ static public class GadgetMapper
         var result = new GadgetModel()
         {
             Id = gadget.Uid,
-            Title = gadget.Name,
+            Title = gadget.Title,
             CreatorName = gadget.Creator.Username,
             CreatorId = gadget.Creator.Uid,
             Price = gadget.Details.Price,

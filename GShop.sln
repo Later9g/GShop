@@ -39,9 +39,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Context.Migrations.MS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Context.Migrations.MySql", "Data\GShop.Context.Migrations\GShop.Context.Migrations.MySql\GShop.Context.Migrations.MySql.csproj", "{9F06A607-2396-49D3-AA2C-4162FAFB6708}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GShop.Services.Gadgets", "Services\GShop.Services.Gadgets\GShop.Services.Gadgets.csproj", "{EB561700-4B88-4D10-BC20-0C70F085536D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Services.Gadgets", "Services\GShop.Services.Gadgets\GShop.Services.Gadgets.csproj", "{EB561700-4B88-4D10-BC20-0C70F085536D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gshop.Api.Settings", "Systems\Api\Gshop.Api.Settings\Gshop.Api.Settings.csproj", "{D05DF8A4-CFFE-4DE6-8CF3-1366419E677F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_docker", "_docker", "{7F51C4B7-41CF-4417-911E-E47AD024EA8C}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		docker-compose.override.yml = docker-compose.override.yml
+		docker-compose.yml = docker-compose.yml
+		env.api = env.api
+		env.worker = env.worker
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

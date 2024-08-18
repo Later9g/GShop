@@ -73,7 +73,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                     b.Property<int>("CreatorId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("character varying(20)");
@@ -85,7 +85,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
 
                     b.HasIndex("CreatorId");
 
-                    b.HasIndex("Name")
+                    b.HasIndex("Title")
                         .IsUnique();
 
                     b.HasIndex("Uid")
