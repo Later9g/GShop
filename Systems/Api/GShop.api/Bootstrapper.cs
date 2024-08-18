@@ -5,6 +5,8 @@ using GShop.Services.Gadgets;
 using GShop.Context.Seeder;
 using GShop.Services.Logger;
 using GShop.Services.Settings;
+using GShop.Services.RabbitMq;
+using GShop.Services.Actions;
 
 public static class Bootstrapper
 {
@@ -19,6 +21,8 @@ public static class Bootstrapper
             .AddApiSpecialSettings()
             .AddGadgetService()
             .AddGadgetViewMapper()
+            .AddRabbitMq()
+            .AddActions()
             ;
 
         return service;

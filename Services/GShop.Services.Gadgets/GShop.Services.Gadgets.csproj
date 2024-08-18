@@ -12,6 +12,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Data\GShop.Context\GShop.Context.csproj" />
+	  <ProjectReference Include="..\GShop.Services.Actions\GShop.Services.Actions.csproj" />
 	</ItemGroup>
 	
 </Project>

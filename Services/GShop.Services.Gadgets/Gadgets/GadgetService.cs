@@ -2,6 +2,7 @@
 using GShop.Common.Validator;
 using GShop.Context;
 using GShop.Context.Entities;
+using GShop.Services.Actions;
 using Microsoft.EntityFrameworkCore;
 
 namespace GShop.Services.Gadgets;
@@ -9,10 +10,13 @@ namespace GShop.Services.Gadgets;
 internal class GadgetService : IGadgetService
 {
     private readonly IDbContextFactory<MainDbContext> dbContextFactory;
+    private readonly IAction action;
 
-    public GadgetService(IDbContextFactory<MainDbContext> dbContextFactory) 
+    public GadgetService(IDbContextFactory<MainDbContext> dbContextFactory,
+        IAction action) 
     {
         this.dbContextFactory = dbContextFactory;
+        this.action = action;
     }
 
     public async Task<IEnumerable<GadgetModel>> GetAll()
@@ -67,8 +71,6 @@ internal class GadgetService : IGadgetService
     {
         using var context = await dbContextFactory.CreateDbContextAsync();
 
-        //var user = await context.Users.Where(x => x.Uid == model.CreatorId).FirstAsync();
-
         var user = await context.Users.SingleOrDefaultAsync(x => x.Uid == model.CreatorId);
 
         if (user == null)
@@ -93,12 +95,14 @@ internal class GadgetService : IGadgetService
 
         await context.SaveChangesAsync();
 
-        //await action.PublicateGadget(new PublicateGadgetModel()
-        //{
-        //    Id = gadget.Id,
-        //    Title = gadget.Title,
-        //    Description = gadget.Description
-        //});
+        await action.PublicateGadget(new PublicateGadgetModel()
+        {
+            Id = gadget.Id,
+            Title = gadget.Title,
+            Description = gadget.Details.Description,
+            CreatorName = gadget.Creator.Username,
+            CreatorEmail = gadget.Creator.Email,
+        });
 
         var result = new GadgetModel()
         {
