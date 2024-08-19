@@ -32,7 +32,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Description = table.Column<string>(type: "character varying(300)", maxLength: 300, nullable: true),
+                    Description = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: true),
                     Price = table.Column<double>(type: "double precision", nullable: false),
                     Star = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
                     Sales = table.Column<double>(type: "double precision", nullable: false, defaultValue: 0.0),
@@ -80,7 +80,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false),
-                    Title = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    Title = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: false),
                     CreatorId = table.Column<int>(type: "integer", nullable: false),
                     Uid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
@@ -299,12 +299,6 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 name: "IX_gadgets_CreatorId",
                 table: "gadgets",
                 column: "CreatorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_gadgets_Title",
-                table: "gadgets",
-                column: "Title",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_gadgets_Uid",

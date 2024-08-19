@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GShop.Context.Migrations.PgSql.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    [Migration("20240817181935_init")]
+    [Migration("20240819043501_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -78,8 +78,8 @@ namespace GShop.Context.Migrations.PgSql.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)");
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)");
 
                     b.Property<Guid>("Uid")
                         .HasColumnType("uuid");
@@ -87,9 +87,6 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CreatorId");
-
-                    b.HasIndex("Title")
-                        .IsUnique();
 
                     b.HasIndex("Uid")
                         .IsUnique();
@@ -106,8 +103,8 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
-                        .HasMaxLength(300)
-                        .HasColumnType("character varying(300)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
 
                     b.Property<double>("Price")
                         .HasColumnType("double precision");
