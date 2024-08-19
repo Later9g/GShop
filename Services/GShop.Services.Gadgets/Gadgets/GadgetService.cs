@@ -34,8 +34,8 @@ internal class GadgetService : IGadgetService
         {
             Id = x.Uid,
             Title = x.Title,
-            CreatorName = x.Creator.Username,
-            CreatorId = x.Creator.Uid,
+            CreatorName = x.Creator.UserName,
+            CreatorId = x.Creator.Id,
             Price = x.Details.Price,
             Stock = x.Details.Stock,
             Categories = x.Categories.Select(s => s.Title),
@@ -71,7 +71,7 @@ internal class GadgetService : IGadgetService
     {
         using var context = await dbContextFactory.CreateDbContextAsync();
 
-        var user = await context.Users.SingleOrDefaultAsync(x => x.Uid == model.CreatorId);
+        var user = await context.Users.SingleOrDefaultAsync(x => x.Id == model.CreatorId);
 
         if (user == null)
         {
@@ -100,7 +100,7 @@ internal class GadgetService : IGadgetService
             Id = gadget.Id,
             Title = gadget.Title,
             Description = gadget.Details.Description,
-            CreatorName = gadget.Creator.Username,
+            CreatorName = gadget.Creator.UserName,
             CreatorEmail = gadget.Creator.Email,
         });
 
@@ -108,8 +108,8 @@ internal class GadgetService : IGadgetService
         {
             Id = gadget.Uid,
             Title = gadget.Title,
-            CreatorName = gadget.Creator.Username,
-            CreatorId = gadget.Creator.Uid,
+            CreatorName = gadget.Creator.UserName,
+            CreatorId = gadget.Creator.Id,
             Price = gadget.Details.Price,
             Stock = gadget.Details.Stock,
             Rating = gadget.Reviews != null ? gadget.Reviews.Average(r => r.Rating) : 0.0,

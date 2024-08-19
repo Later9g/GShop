@@ -1,12 +1,13 @@
-﻿namespace GShop.Context;
-
+﻿
 using GShop.Context.Context;
 using GShop.Context.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-public class MainDbContext : DbContext
+namespace GShop.Context;
+public class MainDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 {
-    public DbSet<User> Users { get; set; }  
     public DbSet<Gadget> Gadgets { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderGadget> OrderGadgets { get; set; }

@@ -27,8 +27,8 @@ static public class GadgetMapper
         {
             Id = gadget.Uid,
             Title = gadget.Title,
-            CreatorName = gadget.Creator.Username,
-            CreatorId = gadget.Creator.Uid,
+            CreatorName = gadget.Creator.UserName,
+            CreatorId = gadget.Creator.Id,
             Price = gadget.Details.Price,
             Stock = gadget.Details.Stock,
             Rating = gadget.Reviews.Any() ? gadget.Reviews.Average(r => r.Rating) : 0.0,

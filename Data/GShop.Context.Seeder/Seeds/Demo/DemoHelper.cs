@@ -10,10 +10,10 @@ public class DemoHelper
     {
         new User()
         {
-            Uid = Guid.NewGuid(),
+            Id = Guid.NewGuid(),
             Email = "testUser@mail.com",
-            Phone = "8 800 555 35 35",
-            Username = "TestName",
+            PhoneNumber = "8 800 555 35 35",
+            UserName = "TestName",
             CreatedGadgets = new List<Gadget>() 
             {
                 new Gadget() 

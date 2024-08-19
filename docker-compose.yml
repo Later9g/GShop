@@ -17,6 +17,15 @@ services:
       - gshop_postgresql
       - gshop_rabbitmq
 
+  gshop_identity:
+    image: ${DOCKER_REGISTRY-}gshopidentity
+    build:
+      context: .
+      dockerfile: Systems/Identity/GShop.Identity/Dockerfile
+    depends_on:
+      - gshop_postgresql
+      - gshop_api
+
   gshop_worker_1:
     image: ${DOCKER_REGISTRY-}gshopworker
     build:
@@ -26,13 +35,3 @@ services:
       - gshop_postgresql
       - gshop_rabbitmq
       - gshop_api
-
-  # gshop_worker_2:
-  #   image: ${DOCKER_REGISTRY-}gshopworker
-  #   build:
-  #     context: .
-  #     dockerfile: Systems/Worker/GShop.Worker/Dockerfile
-  #   depends_on:
-  #     - gshop_postgresql
-  #     - gshop_rabbitmq
-  #     - gshop_api 

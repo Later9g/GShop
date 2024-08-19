@@ -30,7 +30,7 @@ public class CreateGadgetRequestModelValidator : AbstractValidator<CreateGadgetR
             .Must((id) =>
             {
                 using var context = contextFactory.CreateDbContext();
-                var found = context.Users.Any(a => a.Uid == id);
+                var found = context.Users.Any(a => a.Id == id);
                 return found;
             }).WithMessage("User not found");
 

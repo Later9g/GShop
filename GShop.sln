@@ -49,6 +49,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_docker", "_docker", "{7F51
 		docker-compose.override.yml = docker-compose.override.yml
 		docker-compose.yml = docker-compose.yml
 		env.api = env.api
+		env.identity = env.identity
 		env.worker = env.worker
 	EndProjectSection
 EndProject
@@ -57,6 +58,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Services.Actions", "Services\GShop.Services.Actions\GShop.Services.Actions.csproj", "{93B00858-A15A-497E-8C16-F422D254BC23}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Worker", "Systems\Workers\GShop.Worker\GShop.Worker.csproj", "{00AAB389-830E-4144-B360-D73D3ACC80B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{C84DA52B-BCCF-45D9-9FFA-60BCA650ECE9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{176EF3FD-4F7D-4D14-B909-388507102D25}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Identity", "Systems\Identity\GShop.Identity\GShop.Identity.csproj", "{B46B4E34-0965-4E8E-8CE3-CB0A98C3E5F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -124,6 +131,10 @@ Global
 		{00AAB389-830E-4144-B360-D73D3ACC80B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00AAB389-830E-4144-B360-D73D3ACC80B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00AAB389-830E-4144-B360-D73D3ACC80B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B46B4E34-0965-4E8E-8CE3-CB0A98C3E5F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B46B4E34-0965-4E8E-8CE3-CB0A98C3E5F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B46B4E34-0965-4E8E-8CE3-CB0A98C3E5F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B46B4E34-0965-4E8E-8CE3-CB0A98C3E5F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -148,6 +159,9 @@ Global
 		{66817ABB-DF62-4A44-BEE0-04AD418E2B92} = {2171B9DA-8C62-46DC-9C32-3D18A1A7E896}
 		{93B00858-A15A-497E-8C16-F422D254BC23} = {2171B9DA-8C62-46DC-9C32-3D18A1A7E896}
 		{00AAB389-830E-4144-B360-D73D3ACC80B1} = {22EAA0D2-BD8D-4839-B809-BA8E593762CD}
+		{C84DA52B-BCCF-45D9-9FFA-60BCA650ECE9} = {22D9D707-B36C-494D-9987-7FE807D8C434}
+		{176EF3FD-4F7D-4D14-B909-388507102D25} = {22D9D707-B36C-494D-9987-7FE807D8C434}
+		{B46B4E34-0965-4E8E-8CE3-CB0A98C3E5F7} = {C84DA52B-BCCF-45D9-9FFA-60BCA650ECE9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {24715852-D898-4D93-BFBE-C2FB244DE7E4}
