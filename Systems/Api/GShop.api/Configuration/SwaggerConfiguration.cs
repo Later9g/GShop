@@ -81,8 +81,8 @@ public static class SwaggerConfiguration
                         TokenUrl = new Uri($"{identitySettings.Url}/connect/token"),
                         Scopes = new Dictionary<string, string>
                         {
-                            { "Admin", "Admin scope" },
-                            { "User", "User scope" }
+                            { AppScopes.GadgetRead, "Gadget read" },
+                            { AppScopes.GadgetWrite, "Gadget write" }
                         }
                     }
                 }
