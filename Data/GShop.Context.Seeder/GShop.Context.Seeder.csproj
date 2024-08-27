@@ -12,6 +12,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\..\Services\GShop.Services.UserAccount\GShop.Services.UserAccount.csproj" />
 	  <ProjectReference Include="..\..\Shared\GShop.Common\GShop.Common.csproj" />
 	  <ProjectReference Include="..\GShop.Context.Entities\GShop.Context.Entities.csproj" />
 	  <ProjectReference Include="..\GShop.Context\GShop.Context.csproj" />

@@ -11,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 var mainSetting = Settings.Load<MainSettings>("Main");
 var logSetting = Settings.Load<LogSettings>("Log");
 var swaggerSettings = Settings.Load<SwaggerSettings>("Swagger");
+var identitySettings = Settings.Load<IdentitySettings>("Identity");
 
 builder.AddAppLogger(mainSetting, logSetting);
 
@@ -25,7 +26,8 @@ services.AddAppCors();
 services.AddAppControllerAndViews();
 services.AddAppHealthChecks();
 services.AddAppVersioning();
-services.AddAppSwagger(mainSetting,swaggerSettings);
+services.AddAppSwagger(mainSetting,swaggerSettings, identitySettings);
+services.AddAppAuth();
 
 services.RegisterServices(builder.Configuration);
 var app = builder.Build();
@@ -34,6 +36,7 @@ app.UseAppSwagger();
 app.UseAppCors();
 app.UseAppControllerAndViews();
 app.UseAppHealthChecks();
+app.UseAppAuth();
 
 DbInitializer.Execute(app.Services);
 DbSeeder.Execute(app.Services);

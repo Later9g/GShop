@@ -2,7 +2,7 @@
 using GShop.Common.Constants;
 namespace GShop.api.Controllers;
 
-internal  class GadgetViewMapper : IGadgetViewMapper
+public class GadgetViewMapper : IGadgetViewMapper
 {
 
     public GadgetViewMapper()

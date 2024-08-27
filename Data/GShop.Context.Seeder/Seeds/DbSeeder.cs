@@ -1,5 +1,6 @@
 ﻿namespace GShop.Context.Seeder;
 
+using GShop.Services.UserAccount;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -22,6 +23,7 @@ public static class DbSeeder
         Task.Run(async () =>
             {
                 await AddDemoData(serviceProvider);
+                await AddAdministrator(serviceProvider);
             })
             .GetAwaiter()
             .GetResult();
@@ -45,5 +47,28 @@ public static class DbSeeder
         await context.Users.AddRangeAsync(new DemoHelper().GetUsers);
 
         await context.SaveChangesAsync();
+    }
+
+    private static async Task AddAdministrator(IServiceProvider serviceProvider)
+    {
+        using var scope = ServiceScope(serviceProvider);
+        if (scope == null)
+            return;
+
+        var settings = scope.ServiceProvider.GetService<DbSettings>();
+        if (!(settings.Init?.AddAdministrator ?? false))
+            return;
+
+        var userAccountService = scope.ServiceProvider.GetService<IUserAccountService>();
+
+        if (await userAccountService.HasAdmin())
+            return;
+
+        await userAccountService.Create(new RegisterUserAccountModel()
+        {
+            UserName = settings.Init.Administrator.UserName,
+            Email = settings.Init.Administrator.Email,
+            Password = settings.Init.Administrator.Password,
+        });
     }
 }

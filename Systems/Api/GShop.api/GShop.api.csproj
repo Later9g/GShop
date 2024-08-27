@@ -41,8 +41,4 @@
     <ProjectReference Include="..\Gshop.Api.Settings\Gshop.Api.Settings.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Configuration\" />
-  </ItemGroup>
-
 </Project>

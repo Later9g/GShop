@@ -65,6 +65,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{176EF3FD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Identity", "Systems\Identity\GShop.Identity\GShop.Identity.csproj", "{B46B4E34-0965-4E8E-8CE3-CB0A98C3E5F7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Services.UserAccount", "Services\GShop.Services.UserAccount\GShop.Services.UserAccount.csproj", "{04D162B2-E4C2-46E7-B701-4F8AF7A693B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,10 @@ Global
 		{B46B4E34-0965-4E8E-8CE3-CB0A98C3E5F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B46B4E34-0965-4E8E-8CE3-CB0A98C3E5F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B46B4E34-0965-4E8E-8CE3-CB0A98C3E5F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04D162B2-E4C2-46E7-B701-4F8AF7A693B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04D162B2-E4C2-46E7-B701-4F8AF7A693B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04D162B2-E4C2-46E7-B701-4F8AF7A693B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04D162B2-E4C2-46E7-B701-4F8AF7A693B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -162,6 +168,7 @@ Global
 		{C84DA52B-BCCF-45D9-9FFA-60BCA650ECE9} = {22D9D707-B36C-494D-9987-7FE807D8C434}
 		{176EF3FD-4F7D-4D14-B909-388507102D25} = {22D9D707-B36C-494D-9987-7FE807D8C434}
 		{B46B4E34-0965-4E8E-8CE3-CB0A98C3E5F7} = {C84DA52B-BCCF-45D9-9FFA-60BCA650ECE9}
+		{04D162B2-E4C2-46E7-B701-4F8AF7A693B6} = {2171B9DA-8C62-46DC-9C32-3D18A1A7E896}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {24715852-D898-4D93-BFBE-C2FB244DE7E4}

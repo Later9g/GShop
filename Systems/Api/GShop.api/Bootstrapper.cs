@@ -7,6 +7,7 @@ using GShop.Services.Logger;
 using GShop.Services.Settings;
 using GShop.Services.RabbitMq;
 using GShop.Services.Actions;
+using GShop.Services.UserAccount;
 
 public static class Bootstrapper
 {
@@ -16,6 +17,7 @@ public static class Bootstrapper
             .AddMainSettings()
             .AddLogSettings()
             .AddSwaggerSettings()
+            .AddIdentitySettings()
             .AddAppLogger()
             .AddDbSeeder()
             .AddApiSpecialSettings()
@@ -23,7 +25,9 @@ public static class Bootstrapper
             .AddGadgetViewMapper()
             .AddRabbitMq()
             .AddActions()
+            .AddUserAccountService()
             ;
+            
 
         return service;
     }
