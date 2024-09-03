@@ -27,7 +27,7 @@ services.AddAppControllerAndViews();
 services.AddAppHealthChecks();
 services.AddAppVersioning();
 services.AddAppSwagger(mainSetting,swaggerSettings, identitySettings);
-services.AddAppAuth();
+services.AddAppAuth(identitySettings);
 
 services.RegisterServices(builder.Configuration);
 var app = builder.Build();

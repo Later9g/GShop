@@ -17,6 +17,7 @@ COPY ["Data/GShop.Context.Entities/GShop.Context.Entities.csproj", "Data/GShop.C
 COPY ["Data/GShop.Context.Migrations/GShop.Context.Migrations.MySql/GShop.Context.Migrations.MySql.csproj", "Data/GShop.Context.Migrations/GShop.Context.Migrations.MySql/"]
 COPY ["Data/GShop.Context.Migrations/GShop.Context.Migrations.PgSql/GShop.Context.Migrations.PgSql.csproj", "Data/GShop.Context.Migrations/GShop.Context.Migrations.PgSql/"]
 COPY ["Data/GShop.Context.Seeder/GShop.Context.Seeder.csproj", "Data/GShop.Context.Seeder/"]
+COPY ["Services/GShop.Services.UserAccount/GShop.Services.UserAccount.csproj", "Services/GShop.Services.UserAccount/"]
 COPY ["Services/GShop.Services.Actions/GShop.Services.Actions.csproj", "Services/GShop.Services.Actions/"]
 COPY ["Services/GShop.Services.RabbitMq/GShop.Services.RabbitMq.csproj", "Services/GShop.Services.RabbitMq/"]
 COPY ["Services/GShop.Services.Gadgets/GShop.Services.Gadgets.csproj", "Services/GShop.Services.Gadgets/"]

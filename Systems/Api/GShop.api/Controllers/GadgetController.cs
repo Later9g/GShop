@@ -1,12 +1,15 @@
-﻿    
+﻿namespace GShop.Api.App;
+    
 using Asp.Versioning;
 using GShop.api.Controllers;
+using GShop.Common.Security;
 using GShop.Common.Validator;
 using GShop.Services.Gadgets;
 using GShop.Services.Logger;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GShop.Api.App;
+[Authorize]
 [ApiController]
 [ApiVersion("1.0")]
 [ApiExplorerSettings(GroupName = "Product")]
@@ -30,6 +33,7 @@ public class GadgetController : ControllerBase
         this.updateGadgetRequestModelValidator = updateGadgetRequestModelValidator;
     }
 
+    [Authorize(policy: AppScopes.GadgetRead)]
     [HttpGet("")]
     public async Task<IEnumerable<GadgetResponceModel>> GetAll()
     {
@@ -40,6 +44,7 @@ public class GadgetController : ControllerBase
         return result;
     }
 
+    [Authorize(policy: AppScopes.GadgetRead)]
     [HttpGet("{id:Guid}")]
     public async Task<IActionResult> Get([FromRoute] Guid id)
     {
@@ -53,6 +58,7 @@ public class GadgetController : ControllerBase
         return Ok(result);
     }
 
+    [Authorize(policy: AppScopes.GadgetWrite)]
     [HttpPost("")]
     public async Task<GadgetResponceModel> Create(CreateGadgetRequestModel viewRequest)
     {
@@ -69,7 +75,8 @@ public class GadgetController : ControllerBase
 
     }
 
-    [HttpPut("{id:Guid}")]
+    [Authorize(policy: AppScopes.GadgetWrite)]
+        [HttpPut("{id:Guid}")]
     public async Task Update([FromRoute] Guid id, UpdateGadgetRequestModel request)
     {
         await updateGadgetRequestModelValidator.CheckAsync(request);
@@ -78,6 +85,7 @@ public class GadgetController : ControllerBase
             gadgetViewService.UpdateGadgetRequestModelToUpdateGadgetModel(request));
     }
 
+    [Authorize(policy: AppScopes.GadgetWrite)]
     [HttpDelete("{id:Guid}")]
     public async Task Delete([FromRoute] Guid id)
     {
