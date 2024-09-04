@@ -16,4 +16,9 @@ public class Action : IAction
     {
         await rabbitMq.PushAsync(QueueNames.PUBLICATE_GADGET, model);
     }
+
+    public async Task SendEmail(EmailModel model)
+    {
+        await rabbitMq.PushAsync(QueueNames.SEND_EMAIL, model);
+    }
 }
