@@ -1,6 +1,5 @@
 ﻿namespace GShop.Services.UserAccount;
 
-using AutoMapper;
 using GShop.Context.Entities;
 
 public class UserAccountModel

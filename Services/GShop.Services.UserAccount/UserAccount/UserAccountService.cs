@@ -3,6 +3,7 @@
 using GShop.Common.Exceptions;
 using GShop.Common.Validator;
 using GShop.Context.Entities;
+using GShop.Services.Actions;
 using GShop.Services.UserAccount.UserAccount.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -14,16 +15,31 @@ public class UserAccountService : IUserAccountService
     private readonly UserManager<User> userManager;
     private readonly IModelValidator<RegisterUserAccountModel> registerUserAccountModelValidator;
     private readonly IHttpContextAccessor httpContextAccessor;
+    private readonly IAction action;
 
     public UserAccountService(
         UserManager<User> userManager, 
         IModelValidator<RegisterUserAccountModel> registerUserAccountModelValidator,
-        IHttpContextAccessor httpContextAccessor
+        IHttpContextAccessor httpContextAccessor,
+        IAction action
     )
     {
         this.userManager = userManager;
         this.registerUserAccountModelValidator = registerUserAccountModelValidator;
         this.httpContextAccessor = httpContextAccessor;
+        this.action = action;
+    }
+
+    public async Task<User> GetCurrentUser()
+    {
+
+        var userClaim = httpContextAccessor.HttpContext?.User;
+
+        var Name = userClaim.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+        var user = await userManager.FindByNameAsync(Name);
+
+        return user;
     }
 
     public async Task<bool> HasAdmin()
@@ -61,7 +77,6 @@ public class UserAccountService : IUserAccountService
         if (!result.Succeeded)
             throw new ProcessException($"Creating user account is wrong. {string.Join(", ", result.Errors.Select(s => s.Description))}");
 
-
         // Returning the created user
         return UserAccountModelMapper.UserToUserAccountModel(user);
     }
@@ -88,21 +103,38 @@ public class UserAccountService : IUserAccountService
             await userManager.ChangePasswordAsync(user, currentPassword, model.Password);
     }
 
-    public async Task<UserAccountModel> GetById(Guid id)
+    public async Task<UserAccountModel> GetUser(Guid id)
     {
-        var userClaim = httpContextAccessor.HttpContext?.User;
+        var user = await userManager.FindByIdAsync(id.ToString());
 
-        var foo = userClaim.FindFirst(ClaimTypes.NameIdentifier).Value;
+        if (user == null) return null;
 
-        var user = await userManager.FindByNameAsync(foo);
+        var userModel = UserAccountModelMapper.UserToUserAccountModel(user);
 
-        var result = UserAccountModelMapper.UserToUserAccountModel(user);
-
-        return result;
+        return userModel;
     }
 
-    public Task Delete(Guid id)
+    public async Task Delete()
     {
-        throw new NotImplementedException();
+
+        var user = await GetCurrentUser();
+
+        await userManager.DeleteAsync(user);
+    }
+
+    public async Task ConfirmEmail()
+    {
+        var user = await GetCurrentUser();
+
+        var token = userManager.GenerateEmailConfirmationTokenAsync(user);
+
+        await action.SendEmail(new EmailModel()
+        {
+            To = user.Email,
+            Subject = "Email confirmation",
+            Body = $"Click the following link to confirm your email {token}"
+        }) ;
+
+        return;
     }
 }

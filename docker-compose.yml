@@ -25,16 +25,6 @@ services:
     depends_on:
       - gshop_postgresql
       - gshop_api
-
-  gshop_worker_1:
-    image: ${DOCKER_REGISTRY-}gshopworker
-    build:
-      context: .
-      dockerfile: Systems/Workers/GShop.Worker/Dockerfile
-    depends_on:
-      - gshop_postgresql
-      - gshop_rabbitmq
-      - gshop_api
  
   gshop_email_1:
     image: ${DOCKER_REGISTRY-}gshopemail

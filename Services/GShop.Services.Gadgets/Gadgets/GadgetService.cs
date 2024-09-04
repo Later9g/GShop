@@ -95,15 +95,6 @@ internal class GadgetService : IGadgetService
 
         await context.SaveChangesAsync();
 
-        await action.PublicateGadget(new PublicateGadgetModel()
-        {
-            Id = gadget.Id,
-            Title = gadget.Title,
-            Description = gadget.Details.Description,
-            CreatorName = gadget.Creator.UserName,
-            CreatorEmail = gadget.Creator.Email,
-        });
-
         var result = new GadgetModel()
         {
             Id = gadget.Uid,

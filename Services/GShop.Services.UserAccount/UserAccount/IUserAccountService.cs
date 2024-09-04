@@ -1,4 +1,5 @@
-﻿using GShop.Services.UserAccount.UserAccount.Models;
+﻿using GShop.Context.Entities;
+using GShop.Services.UserAccount.UserAccount.Models;
 
 namespace GShop.Services.UserAccount;
 
@@ -12,10 +13,11 @@ public interface IUserAccountService
     /// <param name="model"></param>
     /// <returns></returns>
     Task<UserAccountModel> Create(RegisterUserAccountModel model);
-    Task<UserAccountModel> GetById(Guid id);
+    Task<UserAccountModel> GetUser(Guid id);
     Task Update(Guid id, string currentPassword, UpdateUserAccountModel model);
 
-    Task Delete(Guid id);
+    Task ConfirmEmail();
+    Task Delete();
 
 
 
