@@ -35,3 +35,14 @@ services:
       - gshop_postgresql
       - gshop_rabbitmq
       - gshop_api
+ 
+  gshop_email_1:
+    image: ${DOCKER_REGISTRY-}gshopemail
+    build:
+      context: .
+      dockerfile: Systems/Workers/GShop.EmailSender/Dockerfile
+    depends_on:
+      - gshop_postgresql
+      - gshop_rabbitmq
+      - gshop_api
+ 

@@ -46,6 +46,15 @@ services:
       - "10001:8080"
     env_file:
       - env.worker
+ 
+  gshop_email_1:
+    networks:
+      - shared_gshop_net
+    ports:
+      - "10003:8080"
+    env_file:
+      - env.email
+
 
 networks:
   shared_gshop_net:

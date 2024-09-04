@@ -49,6 +49,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_docker", "_docker", "{7F51
 		docker-compose.override.yml = docker-compose.override.yml
 		docker-compose.yml = docker-compose.yml
 		env.api = env.api
+		env.email = env.email
 		env.identity = env.identity
 		env.worker = env.worker
 	EndProjectSection
@@ -67,7 +68,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Identity", "Systems\I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Services.UserAccount", "Services\GShop.Services.UserAccount\GShop.Services.UserAccount.csproj", "{04D162B2-E4C2-46E7-B701-4F8AF7A693B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GShop.EmailSender", "Systems\Workers\GShop.EmailSender\GShop.EmailSender.csproj", "{A4A0F88A-E9B2-4FE6-B704-EF3B026CFAF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.EmailSender", "Systems\Workers\GShop.EmailSender\GShop.EmailSender.csproj", "{A4A0F88A-E9B2-4FE6-B704-EF3B026CFAF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

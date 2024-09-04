@@ -22,7 +22,6 @@ public static class AppClients
                 AccessTokenLifetime = 3600, // 1 hour
 
                 AllowedScopes = {
-                    AppScopes.GadgetRead,
                     AppScopes.GadgetWrite
                 }
             }
@@ -48,7 +47,6 @@ public static class AppClients
                 SlidingRefreshTokenLifetime = 1296000, // 15 days
 
                 AllowedScopes = {
-                    AppScopes.GadgetRead,
                     AppScopes.GadgetWrite
                 }
             }

@@ -33,7 +33,6 @@ public class GadgetController : ControllerBase
         this.updateGadgetRequestModelValidator = updateGadgetRequestModelValidator;
     }
 
-    [Authorize(policy: AppScopes.GadgetRead)]
     [HttpGet("")]
     public async Task<IEnumerable<GadgetResponceModel>> GetAll()
     {
@@ -44,7 +43,6 @@ public class GadgetController : ControllerBase
         return result;
     }
 
-    [Authorize(policy: AppScopes.GadgetRead)]
     [HttpGet("{id:Guid}")]
     public async Task<IActionResult> Get([FromRoute] Guid id)
     {

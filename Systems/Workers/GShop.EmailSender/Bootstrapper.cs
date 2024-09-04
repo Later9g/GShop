@@ -14,7 +14,7 @@ public static class Bootstrapper
             .AddRabbitMq()
             ;
 
-        services.AddScoped<IMailService, MailService>();
+        services.AddSingleton<IMailService, MailService>();
 
         return services;
     }

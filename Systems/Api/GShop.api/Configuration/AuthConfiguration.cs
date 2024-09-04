@@ -53,7 +53,6 @@ public static class AuthConfiguration
 
         services.AddAuthorization(options =>
         {
-            options.AddPolicy(AppScopes.GadgetRead, policy => policy.RequireClaim("scope", AppScopes.GadgetRead));
             options.AddPolicy(AppScopes.GadgetWrite, policy => policy.RequireClaim("scope", AppScopes.GadgetWrite));
         });
 
