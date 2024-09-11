@@ -26,7 +26,8 @@ static public class UserAccountModelMapper
     static public UserAccountModel UserToUserAccountModel(User user)
     {
         var result = new UserAccountModel()
-        { 
+        {
+            Id = user.Id,
             UserName = user.UserName,
             Email = user.Email,
             PhoneNumber = user.PhoneNumber,

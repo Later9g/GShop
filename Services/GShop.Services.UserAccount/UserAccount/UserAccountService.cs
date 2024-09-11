@@ -116,7 +116,6 @@ public class UserAccountService : IUserAccountService
 
     public async Task Delete()
     {
-
         var user = await GetCurrentUser();
 
         await userManager.DeleteAsync(user);

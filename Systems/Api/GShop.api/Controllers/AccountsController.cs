@@ -4,7 +4,6 @@ using AutoMapper;
 using GShop.Services.UserAccount;
 using Microsoft.AspNetCore.Mvc;
 using Asp.Versioning;
-using GShop.Services.Gadgets;
 using Microsoft.AspNetCore.Authorization;
 
 [ApiController]
@@ -37,15 +36,15 @@ public class AccountsController : ControllerBase
     }
 
     [HttpGet("{id:Guid}")]
-        public async Task<UserResponceDTO> Get(Guid id)
+        public async Task<IActionResult> Get(Guid id)
     {
         var user = await userAccountService.GetUser(id);
 
-        if(user == null) { return null; }
+        if(user == null) { return NotFound(); }
 
         var result = UserDtoMapper.UserAccountModelToUserResponceDto(user);
 
-        return result;
+        return Ok(result);
     }
 
     [Authorize]
