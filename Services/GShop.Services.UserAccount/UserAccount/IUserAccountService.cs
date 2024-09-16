@@ -14,9 +14,8 @@ public interface IUserAccountService
     /// <returns></returns>
     Task<UserAccountModel> Create(RegisterUserAccountModel model);
     Task<UserAccountModel> GetUser(Guid id);
-    Task Update(Guid id, string currentPassword, UpdateUserAccountModel model);
-
-    Task ConfirmEmail();
+    Task Update(Guid id, UpdateUserAccountModel model);
+    Task SendEmailConfirmation(string baseUrl);
     Task Delete();
 
 

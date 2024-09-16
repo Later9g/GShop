@@ -5,6 +5,8 @@ using GShop.Services.UserAccount;
 using Microsoft.AspNetCore.Mvc;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
+using GShop.Common.Security;
+using GShop.Services.UserAccount.UserAccount.Models;
 
 [ApiController]
 [ApiVersion("1.0")]
@@ -32,6 +34,10 @@ public class AccountsController : ControllerBase
 
         var responce = UserDtoMapper.UserAccountModelToUserResponceDto(user);
 
+        var baseUrl = $"{Request.Scheme}://{Request.Host}";
+
+        await userAccountService.SendEmailConfirmation(baseUrl);
+
         return responce;
     }
 
@@ -45,6 +51,13 @@ public class AccountsController : ControllerBase
         var result = UserDtoMapper.UserAccountModelToUserResponceDto(user);
 
         return Ok(result);
+    }
+
+    [Authorize]
+    [HttpPut("{id:Guid}")]
+    public async Task Update([FromRoute] Guid id, UpdateUserAccountModel request)
+    {
+        await userAccountService.Update(id, request);
     }
 
     [Authorize]

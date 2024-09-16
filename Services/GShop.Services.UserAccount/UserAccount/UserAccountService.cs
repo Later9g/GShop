@@ -66,11 +66,10 @@ public class UserAccountService : IUserAccountService
         {
             UserName = model.UserName,
             Email = model.Email,
-            EmailConfirmed = true, // Так как это учебный проект, то сразу считаем, что почта подтверждена. В реальном проекте, скорее всего, надо будет ее подтвердить через ссылку в письме
+            EmailConfirmed = true,
             PhoneNumber = model.PhoneNumber,
-            PhoneNumberConfirmed = false           
-            
-            // ... Также здесь есть еще интересные свойства. Посмотрите в документации.
+            PhoneNumberConfirmed = true           
+
         };
 
         var result = await userManager.CreateAsync(user, model.Password);
@@ -81,26 +80,53 @@ public class UserAccountService : IUserAccountService
         return UserAccountModelMapper.UserToUserAccountModel(user);
     }
 
-    public async Task Update(Guid id, string currentPassword, UpdateUserAccountModel model)
+    public async Task Update(Guid id, UpdateUserAccountModel model)
     {
         var user = await userManager.FindByIdAsync(id.ToString());
 
         if (user == null)
             throw new ProcessException("User not fouhd");
 
-        user.UserName = model.UserName == null? user.UserName : model.UserName;
+        if (!string.IsNullOrEmpty(model.UserName) && model.UserName != user.UserName)
+        {
+            user.UserName = model.UserName;
+        }
 
-        var emailToken = await userManager.GenerateChangeEmailTokenAsync(user, model.Email);
-        if (model.Email != null)
-            await userManager.ChangeEmailAsync(user, model.Email, emailToken);
+        if (!string.IsNullOrEmpty(model.Email) && model.Email != user.Email)
+        {
+            var emailChangeToken = await userManager.GenerateChangeEmailTokenAsync(user, model.Email);
+            var resultEmail = await userManager.ChangeEmailAsync(user, model.Email, emailChangeToken);
+            if (!resultEmail.Succeeded)
+            {
+                throw new ProcessException($"Error updating email: {string.Join(", ", resultEmail.Errors.Select(e => e.Description))}");
+            }
+        }
 
-        var phoneNumberToken = await userManager.GenerateChangePhoneNumberTokenAsync(user, model.PhoneNumber);
+        if (!string.IsNullOrEmpty(model.PhoneNumber) && model.PhoneNumber != user.PhoneNumber)
+        {
+            var phoneChangeToken = await userManager.GenerateChangePhoneNumberTokenAsync(user, model.PhoneNumber);
+            var resultPhone = await userManager.ChangePhoneNumberAsync(user, model.PhoneNumber, phoneChangeToken);
+            if (!resultPhone.Succeeded)
+            {
+                throw new ProcessException($"Error updating phone number: {string.Join(", ", resultPhone.Errors.Select(e => e.Description))}");
+            }
+        }
 
-        if (model.PhoneNumber != null)
-            await userManager.ChangePhoneNumberAsync(user, model.PhoneNumber, phoneNumberToken);
+        if (!string.IsNullOrEmpty(model.Password))
+        {
+            var resultPassword = await userManager.ChangePasswordAsync(user, model.CurrentPassword, model.Password);
+            if (!resultPassword.Succeeded)
+            {
+                throw new ProcessException($"Error updating password: {string.Join(", ", resultPassword.Errors.Select(e => e.Description))}");
+            }
+        }
 
-        if (model.Password != null)
-            await userManager.ChangePasswordAsync(user, currentPassword, model.Password);
+        var updateResult = await userManager.UpdateAsync(user);
+
+        if (!updateResult.Succeeded)
+        {
+            throw new ProcessException($"Error updating user account: {string.Join(", ", updateResult.Errors.Select(e => e.Description))}");
+        }
     }
 
     public async Task<UserAccountModel> GetUser(Guid id)
@@ -121,18 +147,22 @@ public class UserAccountService : IUserAccountService
         await userManager.DeleteAsync(user);
     }
 
-    public async Task ConfirmEmail()
+    public async Task SendEmailConfirmation(string baseUrl)
     {
         var user = await GetCurrentUser();
 
-        var token = userManager.GenerateEmailConfirmationTokenAsync(user);
+        var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
 
-        await action.SendEmail(new EmailModel()
+        var confirmationLink = $"{baseUrl}/Account/ConfirmEmail?userId={user.Id}&token={Uri.EscapeDataString(token)}";
+
+        var email = new EmailModel()
         {
             To = user.Email,
             Subject = "Email confirmation",
-            Body = $"Click the following link to confirm your email {token}"
-        }) ;
+            Body = $"Click the following link to confirm your email: {confirmationLink}"
+        };
+
+        await action.SendEmail(email) ;
 
         return;
     }
