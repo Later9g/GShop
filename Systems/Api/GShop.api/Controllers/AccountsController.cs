@@ -34,10 +34,6 @@ public class AccountsController : ControllerBase
 
         var responce = UserDtoMapper.UserAccountModelToUserResponceDto(user);
 
-        var baseUrl = $"{Request.Scheme}://{Request.Host}";
-
-        await userAccountService.SendEmailConfirmation(baseUrl);
-
         return responce;
     }
 
@@ -65,6 +61,15 @@ public class AccountsController : ControllerBase
     public async Task Delete()
     {
         await userAccountService.Delete();
+    }
+
+    [Authorize]
+    [HttpPut("")]
+    public async Task ConfirmEmail()
+    {
+        var baseUrl = $"{Request.Scheme}://{Request.Host}";
+
+        await userAccountService.SendEmailConfirmation(baseUrl);
     }
 
 }

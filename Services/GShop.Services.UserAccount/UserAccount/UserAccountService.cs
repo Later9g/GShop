@@ -35,9 +35,27 @@ public class UserAccountService : IUserAccountService
 
         var userClaim = httpContextAccessor.HttpContext?.User;
 
-        var Name = userClaim.FindFirst(ClaimTypes.NameIdentifier).Value;
+        // Проверяем, что есть данные о пользователе
+        if (userClaim == null || !userClaim.Identity.IsAuthenticated)
+        {
+            throw new InvalidOperationException("No user is currently logged in.");
+        }
 
-        var user = await userManager.FindByNameAsync(Name);
+        // Получаем идентификатор пользователя
+        var userId = userClaim.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        if (string.IsNullOrEmpty(userId))
+        {
+            throw new InvalidOperationException("User ID claim not found.");
+        }
+
+        // Ищем пользователя по идентификатору
+        var user = await userManager.FindByIdAsync(userId);
+
+        if (user == null)
+        {
+            throw new InvalidOperationException("User not found.");
+        }
 
         return user;
     }
