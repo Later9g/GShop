@@ -22,6 +22,8 @@ services:
       - shared_gshop_net
     volumes:      
       - ./rabbitmq:/var/lib/rabbitmq
+    command: >
+      bash -c "chown rabbitmq:rabbitmq /var/lib/rabbitmq/.erlang.cookie && chmod 400 /var/lib/rabbitmq/.erlang.cookie && rabbitmq-server"
     
   gshop_api:
     ports:
