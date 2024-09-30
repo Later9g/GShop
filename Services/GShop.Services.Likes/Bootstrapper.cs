@@ -6,7 +6,7 @@ public static class Bootstrapper
 {
     public static IServiceCollection AddLikeService(this IServiceCollection services)
     {
-        services.AddSingleton<ILikeService, LikeService>();  
+        services.AddScoped<ILikeService, LikeService>();  
 
         return services;
     }

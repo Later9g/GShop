@@ -1,10 +1,7 @@
 ﻿using GShop.Context;
 using GShop.Context.Entities;
 using GShop.Services.ContextAccess;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
 
 namespace GShop.Services.Likes;
 

@@ -6,6 +6,6 @@ public static class Bootstrapper
     public static IServiceCollection AddGadgetService(this IServiceCollection services)
     {
         return services
-            .AddSingleton<IGadgetService, GadgetService>();            
+            .AddScoped<IGadgetService, GadgetService>();            
     }
 }

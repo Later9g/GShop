@@ -1,9 +1,7 @@
 ﻿using GShop.Common.Exceptions;
-using GShop.Common.Validator;
 using GShop.Context;
 using GShop.Context.Entities;
 using GShop.Services.Actions;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace GShop.Services.Gadgets;
