@@ -4,60 +4,28 @@ using GShop.Common.Exceptions;
 using GShop.Common.Validator;
 using GShop.Context.Entities;
 using GShop.Services.Actions;
-using GShop.Services.UserAccount.UserAccount.Models;
-using Microsoft.AspNetCore.Http;
+using GShop.Services.ContextAccess;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
 
 public class UserAccountService : IUserAccountService
 {
     private readonly UserManager<User> userManager;
     private readonly IModelValidator<RegisterUserAccountModel> registerUserAccountModelValidator;
-    private readonly IHttpContextAccessor httpContextAccessor;
     private readonly IAction action;
+    private readonly IContextAccess contextAccess;
 
     public UserAccountService(
         UserManager<User> userManager, 
+        IContextAccess contextAccess,
         IModelValidator<RegisterUserAccountModel> registerUserAccountModelValidator,
-        IHttpContextAccessor httpContextAccessor,
         IAction action
     )
     {
         this.userManager = userManager;
         this.registerUserAccountModelValidator = registerUserAccountModelValidator;
-        this.httpContextAccessor = httpContextAccessor;
         this.action = action;
-    }
-
-    public async Task<User> GetCurrentUser()
-    {
-
-        var userClaim = httpContextAccessor.HttpContext?.User;
-
-        // Проверяем, что есть данные о пользователе
-        if (userClaim == null || !userClaim.Identity.IsAuthenticated)
-        {
-            throw new InvalidOperationException("No user is currently logged in.");
-        }
-
-        // Получаем идентификатор пользователя
-        var userId = userClaim.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-        if (string.IsNullOrEmpty(userId))
-        {
-            throw new InvalidOperationException("User ID claim not found.");
-        }
-
-        // Ищем пользователя по идентификатору
-        var user = await userManager.FindByIdAsync(userId);
-
-        if (user == null)
-        {
-            throw new InvalidOperationException("User not found.");
-        }
-
-        return user;
+        this.contextAccess = contextAccess;
     }
 
     public async Task<bool> HasAdmin()
@@ -74,12 +42,10 @@ public class UserAccountService : IUserAccountService
     {
         registerUserAccountModelValidator.Check(model);
 
-        // Find user by email
         var user = await userManager.FindByEmailAsync(model.Email);
         if (user != null)
             throw new ProcessException($"User account with email {model.Email} already exist.");
 
-        // Create user account
         user = new User()
         {
             UserName = model.UserName,
@@ -94,7 +60,6 @@ public class UserAccountService : IUserAccountService
         if (!result.Succeeded)
             throw new ProcessException($"Creating user account is wrong. {string.Join(", ", result.Errors.Select(s => s.Description))}");
 
-        // Returning the created user
         return UserAccountModelMapper.UserToUserAccountModel(user);
     }
 
@@ -160,14 +125,14 @@ public class UserAccountService : IUserAccountService
 
     public async Task Delete()
     {
-        var user = await GetCurrentUser();
+        var user = await contextAccess.GetCurrentUser();
 
         await userManager.DeleteAsync(user);
     }
 
     public async Task SendEmailConfirmation(string baseUrl)
     {
-        var user = await GetCurrentUser();
+        var user = await contextAccess.GetCurrentUser();
 
         var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
 

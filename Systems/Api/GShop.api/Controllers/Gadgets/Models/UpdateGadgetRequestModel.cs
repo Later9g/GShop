@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using GShop.Services.Gadgets;
 
-namespace GShop.api.Controllers;
+namespace GShop.Api.Controllers;
 
 public class UpdateGadgetRequestModel
 {

@@ -8,6 +8,8 @@ using GShop.Services.Settings;
 using GShop.Services.RabbitMq;
 using GShop.Services.Actions;
 using GShop.Services.UserAccount;
+using GShop.Services.ContextAccess;
+using GShop.Services.Likes;
 
 public static class Bootstrapper
 {
@@ -26,6 +28,8 @@ public static class Bootstrapper
             .AddRabbitMq()
             .AddActions()
             .AddUserAccountService()
+            .AddContextAccessService()
+            .AddLikeService()
             ;
             
 

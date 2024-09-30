@@ -1,6 +1,6 @@
 ﻿using GShop.Services.UserAccount;
 
-namespace GShop.api.Controllers;
+namespace GShop.Api.Controllers;
 
 public static class UserDtoMapper
 {

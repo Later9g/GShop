@@ -327,6 +327,33 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "likes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
+                    GadgetId = table.Column<int>(type: "integer", nullable: false),
+                    Uid = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_likes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_likes_gadgets_GadgetId",
+                        column: x => x.GadgetId,
+                        principalTable: "gadgets",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_likes_users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "reviews",
                 columns: table => new
                 {
@@ -336,7 +363,6 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                     GadgetId = table.Column<int>(type: "integer", nullable: false),
                     Rating = table.Column<int>(type: "integer", nullable: false),
                     Comment = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
-                    IsLiked = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     Uid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
@@ -435,6 +461,23 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_likes_GadgetId",
+                table: "likes",
+                column: "GadgetId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_likes_Uid",
+                table: "likes",
+                column: "Uid",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_likes_UserId_GadgetId",
+                table: "likes",
+                columns: new[] { "UserId", "GadgetId" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_order_statuses_Uid",
                 table: "order_statuses",
                 column: "Uid",
@@ -525,6 +568,9 @@ namespace GShop.Context.Migrations.PgSql.Migrations
 
             migrationBuilder.DropTable(
                 name: "gadget_images");
+
+            migrationBuilder.DropTable(
+                name: "likes");
 
             migrationBuilder.DropTable(
                 name: "reviews");

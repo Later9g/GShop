@@ -3,7 +3,7 @@ using GShop.Context;
 using GShop.Services.Gadgets;
 using Microsoft.EntityFrameworkCore;
 
-namespace GShop.api.Controllers;
+namespace GShop.Api.Controllers;
 
 public class CreateGadgetRequestModel
 {

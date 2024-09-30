@@ -1,7 +1,4 @@
-﻿using GShop.Context.Entities;
-using GShop.Services.UserAccount.UserAccount.Models;
-
-namespace GShop.Services.UserAccount;
+﻿namespace GShop.Services.UserAccount;
 
 public interface IUserAccountService
 {

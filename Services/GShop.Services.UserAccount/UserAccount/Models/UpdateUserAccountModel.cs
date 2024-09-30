@@ -1,6 +1,6 @@
 ﻿using GShop.Context.Entities;
 
-namespace GShop.Services.UserAccount.UserAccount.Models;
+namespace GShop.Services.UserAccount;
 
 public class UpdateUserAccountModel
 {

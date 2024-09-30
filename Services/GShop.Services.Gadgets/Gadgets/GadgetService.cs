@@ -3,6 +3,7 @@ using GShop.Common.Validator;
 using GShop.Context;
 using GShop.Context.Entities;
 using GShop.Services.Actions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace GShop.Services.Gadgets;
@@ -13,10 +14,12 @@ internal class GadgetService : IGadgetService
     private readonly IAction action;
 
     public GadgetService(IDbContextFactory<MainDbContext> dbContextFactory,
-        IAction action) 
+        IAction action
+        ) 
     {
         this.dbContextFactory = dbContextFactory;
         this.action = action;
+
     }
 
     public async Task<IEnumerable<GadgetModel>> GetAll()

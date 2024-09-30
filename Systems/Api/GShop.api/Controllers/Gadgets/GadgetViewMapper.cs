@@ -1,6 +1,6 @@
 ﻿using GShop.Services.Gadgets;
 using GShop.Common.Constants;
-namespace GShop.api.Controllers;
+namespace GShop.Api.Controllers;
 
 public class GadgetViewMapper : IGadgetViewMapper
 {

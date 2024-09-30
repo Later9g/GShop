@@ -67,7 +67,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Services.UserAccount"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.EmailSender", "Systems\Workers\GShop.EmailSender\GShop.EmailSender.csproj", "{A4A0F88A-E9B2-4FE6-B704-EF3B026CFAF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GShop.SmsSender", "Systems\Workers\GShop.SmsSender\GShop.SmsSender.csproj", "{D53184F5-EC67-41C5-8067-9B6621A5FE44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.SmsSender", "Systems\Workers\GShop.SmsSender\GShop.SmsSender.csproj", "{D53184F5-EC67-41C5-8067-9B6621A5FE44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GShop.Services.Likes", "Services\GShop.Services.Likes\GShop.Services.Likes.csproj", "{E5349276-8F2E-4A60-8C6D-47B1F5B9CE7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GShop.Services.ContextAccess", "Services\GShop.Services.ContextAccess\GShop.Services.ContextAccess.csproj", "{51164A84-FA0C-483C-8955-C3DF655FFC47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -147,6 +151,14 @@ Global
 		{D53184F5-EC67-41C5-8067-9B6621A5FE44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D53184F5-EC67-41C5-8067-9B6621A5FE44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D53184F5-EC67-41C5-8067-9B6621A5FE44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5349276-8F2E-4A60-8C6D-47B1F5B9CE7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5349276-8F2E-4A60-8C6D-47B1F5B9CE7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5349276-8F2E-4A60-8C6D-47B1F5B9CE7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5349276-8F2E-4A60-8C6D-47B1F5B9CE7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51164A84-FA0C-483C-8955-C3DF655FFC47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51164A84-FA0C-483C-8955-C3DF655FFC47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51164A84-FA0C-483C-8955-C3DF655FFC47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51164A84-FA0C-483C-8955-C3DF655FFC47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -176,6 +188,8 @@ Global
 		{04D162B2-E4C2-46E7-B701-4F8AF7A693B6} = {2171B9DA-8C62-46DC-9C32-3D18A1A7E896}
 		{A4A0F88A-E9B2-4FE6-B704-EF3B026CFAF4} = {22EAA0D2-BD8D-4839-B809-BA8E593762CD}
 		{D53184F5-EC67-41C5-8067-9B6621A5FE44} = {22EAA0D2-BD8D-4839-B809-BA8E593762CD}
+		{E5349276-8F2E-4A60-8C6D-47B1F5B9CE7F} = {2171B9DA-8C62-46DC-9C32-3D18A1A7E896}
+		{51164A84-FA0C-483C-8955-C3DF655FFC47} = {2171B9DA-8C62-46DC-9C32-3D18A1A7E896}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {24715852-D898-4D93-BFBE-C2FB244DE7E4}

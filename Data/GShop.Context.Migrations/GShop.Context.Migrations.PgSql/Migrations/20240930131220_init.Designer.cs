@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GShop.Context.Migrations.PgSql.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    [Migration("20240819092618_init")]
+    [Migration("20240930131220_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -151,6 +151,36 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                     b.ToTable("gadget_images", (string)null);
                 });
 
+            modelBuilder.Entity("GShop.Context.Entities.Like", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("GadgetId")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("Uid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GadgetId");
+
+                    b.HasIndex("Uid")
+                        .IsUnique();
+
+                    b.HasIndex("UserId", "GadgetId")
+                        .IsUnique();
+
+                    b.ToTable("likes", (string)null);
+                });
+
             modelBuilder.Entity("GShop.Context.Entities.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -264,11 +294,6 @@ namespace GShop.Context.Migrations.PgSql.Migrations
 
                     b.Property<int>("GadgetId")
                         .HasColumnType("integer");
-
-                    b.Property<bool>("IsLiked")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false);
 
                     b.Property<int>("Rating")
                         .HasColumnType("integer");
@@ -552,6 +577,25 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                     b.Navigation("Gadget");
                 });
 
+            modelBuilder.Entity("GShop.Context.Entities.Like", b =>
+                {
+                    b.HasOne("GShop.Context.Entities.Gadget", "Gadget")
+                        .WithMany("Likes")
+                        .HasForeignKey("GadgetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GShop.Context.Entities.User", "User")
+                        .WithMany("Likes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Gadget");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("GShop.Context.Entities.Order", b =>
                 {
                     b.HasOne("GShop.Context.Entities.OrderStatus", "Status")
@@ -679,6 +723,8 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 {
                     b.Navigation("Images");
 
+                    b.Navigation("Likes");
+
                     b.Navigation("OrderGadgets");
 
                     b.Navigation("Reviews");
@@ -703,6 +749,8 @@ namespace GShop.Context.Migrations.PgSql.Migrations
             modelBuilder.Entity("GShop.Context.Entities.User", b =>
                 {
                     b.Navigation("CreatedGadgets");
+
+                    b.Navigation("Likes");
 
                     b.Navigation("Orders");
 

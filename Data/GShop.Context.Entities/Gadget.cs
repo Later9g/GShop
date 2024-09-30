@@ -13,6 +13,8 @@ public class Gadget : BaseEntity
     public virtual ICollection<GadgetImage>? Images { get; set; } 
     public virtual ICollection<OrderGadget>? OrderGadgets { get; set; } 
     public virtual ICollection<Review>? Reviews { get; set; }
+
+    public virtual ICollection<Like>? Likes { get; set; }
 }
 
 // user_id count(reviews) avg(rating) images description

@@ -1,7 +1,6 @@
-﻿namespace GShop.Api.App;
-    
+﻿namespace GShop.Api.Controllers;
+
 using Asp.Versioning;
-using GShop.api.Controllers;
 using GShop.Common.Security;
 using GShop.Common.Validator;
 using GShop.Services.Gadgets;

@@ -1,4 +1,4 @@
-﻿using GShop.api.Controllers;
+﻿using GShop.Api.Controllers;
 
 namespace GShop.Services.Gadgets;
 public static class Bootstrapper

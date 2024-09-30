@@ -4,6 +4,7 @@ using GShop.Context.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using GShop.Context.Context.Configuration;
 
 namespace GShop.Context;
 public class MainDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
@@ -16,6 +17,7 @@ public class MainDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     public DbSet<Review> Reviews { get; set; }
     public DbSet<GadgetDetails> GadgetDetails { get; set; }
     public DbSet<OrderStatus> OrderStatuses { get; set; }
+    public DbSet<Like> Likes { get; set; }
 
 
     public MainDbContext(DbContextOptions<MainDbContext> options) : base(options) { }
@@ -33,5 +35,6 @@ public class MainDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
         modelBuilder.ConfigureOrderStatuses();
         modelBuilder.ConfigureReviews();
         modelBuilder.ConfigureUsers();
+        modelBuilder.ConfiugreLikes();
     }
 }

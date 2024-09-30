@@ -1,4 +1,4 @@
-﻿namespace GShop.api.Controllers;
+﻿namespace GShop.Api.Controllers;
 
 public class UserResponceDTO
 {

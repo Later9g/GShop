@@ -1,12 +1,10 @@
-﻿namespace GShop.api.Controllers;
+﻿namespace GShop.Api.Controllers;
 
 using AutoMapper;
 using GShop.Services.UserAccount;
 using Microsoft.AspNetCore.Mvc;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
-using GShop.Common.Security;
-using GShop.Services.UserAccount.UserAccount.Models;
 
 [ApiController]
 [ApiVersion("1.0")]

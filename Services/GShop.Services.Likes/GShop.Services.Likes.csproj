@@ -3,13 +3,12 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\GShop.Context.Entities\GShop.Context.Entities.csproj" />
     <ProjectReference Include="..\..\Data\GShop.Context\GShop.Context.csproj" />
-    <ProjectReference Include="..\..\Shared\GShop.Common\GShop.Common.csproj" />
-    <ProjectReference Include="..\GShop.Services.Actions\GShop.Services.Actions.csproj" />
     <ProjectReference Include="..\GShop.Services.ContextAccess\GShop.Services.ContextAccess.csproj" />
   </ItemGroup>
 
