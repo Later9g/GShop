@@ -10,13 +10,13 @@ using Microsoft.AspNetCore.Authorization;
 [ApiVersion("1.0")]
 [ApiExplorerSettings(GroupName = "Product")]
 [Route("v{version:apiVersion}/[controller]")]
-public class AccountsController : ControllerBase
+public class AccountController : ControllerBase
 {
     private readonly IMapper mapper;
-    private readonly ILogger<AccountsController> logger;
+    private readonly ILogger<AccountController> logger;
     private readonly IUserAccountService userAccountService;
 
-    public AccountsController(IMapper mapper, ILogger<AccountsController> logger, IUserAccountService userAccountService)
+    public AccountController(IMapper mapper, ILogger<AccountController> logger, IUserAccountService userAccountService)
     {
         this.mapper = mapper;
         this.logger = logger;

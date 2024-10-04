@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RabbitMQ.Client" Version="6.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\GShop.Context\GShop.Context.csproj" />
+    <ProjectReference Include="..\GShop.Services.ContextAccess\GShop.Services.ContextAccess.csproj" />
+    <ProjectReference Include="..\GShop.Services.RabbitMq\GShop.Services.RabbitMq.csproj" />
+  </ItemGroup>
+
+</Project>

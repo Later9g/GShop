@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "gshop_api": "StartDebugging",
+        "gshop_email_1": "StartDebugging",
+        "gshop_identity": "StartDebugging"
+      }
+    }
+  }
+}

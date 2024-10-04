@@ -8,6 +8,7 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
     <UserSecretsId>9f4ed2d3-d26b-4f73-b7d4-79b6f8465a6f</UserSecretsId>
+    <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
 
@@ -40,9 +41,10 @@
     <ProjectReference Include="..\..\..\Services\GShop.Services.Actions\GShop.Services.Actions.csproj" />
     <ProjectReference Include="..\..\..\Services\GShop.Services.ContextAccess\GShop.Services.ContextAccess.csproj" />
     <ProjectReference Include="..\..\..\Services\GShop.Services.Gadgets\GShop.Services.Gadgets.csproj" />
-    <ProjectReference Include="..\..\..\Services\GShop.Services.Images\GShop.Services.Imagesss.csproj" />
+    <ProjectReference Include="..\..\..\Services\GShop.Services.Images\GShop.Services.Images.csproj" />
     <ProjectReference Include="..\..\..\Services\GShop.Services.Likes\GShop.Services.Likes.csproj" />
     <ProjectReference Include="..\..\..\Services\GShop.Services.Logger\GShop.Services.Logger.csproj" />
+    <ProjectReference Include="..\..\..\Services\GShop.Services.Orders\GShop.Services.Orders.csproj" />
     <ProjectReference Include="..\..\..\Services\GShop.Services.RabbitMq\GShop.Services.RabbitMq.csproj" />
     <ProjectReference Include="..\..\..\Services\GShop.Services.Settings\GShop.Services.Settings.csproj" />
     <ProjectReference Include="..\..\..\Shared\GShop.Common\GShop.Common.csproj" />

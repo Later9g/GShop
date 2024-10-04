@@ -73,7 +73,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Services.Likes", "Ser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Services.ContextAccess", "Services\GShop.Services.ContextAccess\GShop.Services.ContextAccess.csproj", "{51164A84-FA0C-483C-8955-C3DF655FFC47}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Services.Imagesss", "Services\GShop.Services.Images\GShop.Services.Imagesss.csproj", "{F02C7C6D-E24E-4FA2-BA07-8FD0AE63F53C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Services.Images", "Services\GShop.Services.Images\GShop.Services.Images.csproj", "{F02C7C6D-E24E-4FA2-BA07-8FD0AE63F53C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Services.Orders", "Services\GShop.Services.Orders\GShop.Services.Orders.csproj", "{5B9B65F1-3D0A-4553-9B70-D32402BF8A5B}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{EAD2A2F2-FC29-48EF-BF7E-1AD760196C54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -165,6 +169,14 @@ Global
 		{F02C7C6D-E24E-4FA2-BA07-8FD0AE63F53C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F02C7C6D-E24E-4FA2-BA07-8FD0AE63F53C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F02C7C6D-E24E-4FA2-BA07-8FD0AE63F53C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B9B65F1-3D0A-4553-9B70-D32402BF8A5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B9B65F1-3D0A-4553-9B70-D32402BF8A5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B9B65F1-3D0A-4553-9B70-D32402BF8A5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B9B65F1-3D0A-4553-9B70-D32402BF8A5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAD2A2F2-FC29-48EF-BF7E-1AD760196C54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAD2A2F2-FC29-48EF-BF7E-1AD760196C54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAD2A2F2-FC29-48EF-BF7E-1AD760196C54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAD2A2F2-FC29-48EF-BF7E-1AD760196C54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -197,6 +209,7 @@ Global
 		{E5349276-8F2E-4A60-8C6D-47B1F5B9CE7F} = {2171B9DA-8C62-46DC-9C32-3D18A1A7E896}
 		{51164A84-FA0C-483C-8955-C3DF655FFC47} = {2171B9DA-8C62-46DC-9C32-3D18A1A7E896}
 		{F02C7C6D-E24E-4FA2-BA07-8FD0AE63F53C} = {2171B9DA-8C62-46DC-9C32-3D18A1A7E896}
+		{5B9B65F1-3D0A-4553-9B70-D32402BF8A5B} = {2171B9DA-8C62-46DC-9C32-3D18A1A7E896}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {24715852-D898-4D93-BFBE-C2FB244DE7E4}

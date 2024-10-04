@@ -10,5 +10,5 @@ public class OrderGadget : BaseEntity
 
     public int Quantity { get; set; } = default!;
     public double Price { get; set; } = default!;
-    public int Total { get; set; } = default!;
+    public double Total { get; set; } = default!;
 }
