@@ -141,9 +141,15 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                         .IsRequired()
                         .HasColumnType("bytea");
 
+                    b.Property<Guid>("Uid")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
 
                     b.HasIndex("GadgetId");
+
+                    b.HasIndex("Uid")
+                        .IsUnique();
 
                     b.ToTable("gadget_images", (string)null);
                 });

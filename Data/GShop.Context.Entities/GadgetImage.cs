@@ -2,10 +2,8 @@
 
 namespace GShop.Context.Entities;
 
-public class GadgetImage
+public class GadgetImage : BaseEntity
 {
-    [Key]
-    public int Id { get; set; }
     public int GadgetId { get; set; }
     public virtual Gadget Gadget { get; set; }
     public byte[] Image { get; set; } = default!;

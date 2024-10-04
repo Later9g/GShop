@@ -130,6 +130,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_gadgets", x => x.Id);
+                    table.UniqueConstraint("AK_gadgets_Uid", x => x.Uid);
                     table.ForeignKey(
                         name: "FK_gadgets_gadget_details_Id",
                         column: x => x.Id,
@@ -313,7 +314,8 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     GadgetId = table.Column<int>(type: "integer", nullable: false),
-                    Image = table.Column<byte[]>(type: "bytea", nullable: false)
+                    Image = table.Column<byte[]>(type: "bytea", nullable: false),
+                    Uid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -360,7 +362,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<Guid>(type: "uuid", nullable: false),
-                    GadgetId = table.Column<int>(type: "integer", nullable: false),
+                    GadgetId = table.Column<Guid>(type: "uuid", nullable: false),
                     Rating = table.Column<int>(type: "integer", nullable: false),
                     Comment = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     Uid = table.Column<Guid>(type: "uuid", nullable: false)
@@ -372,7 +374,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                         name: "FK_reviews_gadgets_GadgetId",
                         column: x => x.GadgetId,
                         principalTable: "gadgets",
-                        principalColumn: "Id",
+                        principalColumn: "Uid",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_reviews_users_UserId",
@@ -448,6 +450,12 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                 name: "IX_gadget_images_GadgetId",
                 table: "gadget_images",
                 column: "GadgetId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_gadget_images_Uid",
+                table: "gadget_images",
+                column: "Uid",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_gadgets_CreatorId",

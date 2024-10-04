@@ -24,14 +24,15 @@ public class LikeService : ILikeService
 
         using var context = await dbContextFactory.CreateDbContextAsync();
 
-        var gadget = await context.Gadgets.FindAsync(gadgetId);
+        var gadget = await context.Gadgets.FirstOrDefaultAsync(x => x.Uid == gadgetId);
 
-        if(gadget != null) 
+        if(gadget == null) 
         {
             throw new InvalidOperationException("Gadget does not exist.");
         }
 
         var existingLike = await context.Likes.FirstOrDefaultAsync(l => l.GadgetId == gadget.Id && l.UserId == user.Id);
+
         if (existingLike != null)
         {
             throw new InvalidOperationException("User has already liked this gadget.");
@@ -61,9 +62,9 @@ public class LikeService : ILikeService
     {
         using var context = await dbContextFactory.CreateDbContextAsync();
 
-        var gadget = await context.Gadgets.FindAsync(gadgetId);
+        var gadget = await context.Gadgets.FirstOrDefaultAsync(x => x.Uid == gadgetId);
 
-        if (gadget != null)
+        if (gadget == null)
         {
             throw new InvalidOperationException("Gadget does not exist.");
         }
@@ -77,9 +78,9 @@ public class LikeService : ILikeService
         var user = await contextAccess.GetCurrentUser();
         using var context = await dbContextFactory.CreateDbContextAsync();
 
-        var gadget = await context.Gadgets.FindAsync(gadgetId);
+        var gadget = await context.Gadgets.FirstOrDefaultAsync(x => x.Uid == gadgetId);
 
-        if (gadget != null)
+        if (gadget == null)
         {
             throw new InvalidOperationException("Gadget does not exist.");
         }
@@ -94,9 +95,9 @@ public class LikeService : ILikeService
 
         using var context = await dbContextFactory.CreateDbContextAsync();
 
-        var gadget = await context.Gadgets.FindAsync(gadgetId);
+        var gadget = await context.Gadgets.FirstOrDefaultAsync(x => x.Uid == gadgetId);
 
-        if (gadget != null)
+        if (gadget == null)
         {
             throw new InvalidOperationException("Gadget does not exist.");
         }

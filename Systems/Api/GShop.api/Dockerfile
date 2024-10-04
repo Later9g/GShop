@@ -4,6 +4,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER app
 WORKDIR /app
 EXPOSE 8080
+EXPOSE 8081
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
@@ -20,7 +21,10 @@ COPY ["Data/GShop.Context.Seeder/GShop.Context.Seeder.csproj", "Data/GShop.Conte
 COPY ["Services/GShop.Services.UserAccount/GShop.Services.UserAccount.csproj", "Services/GShop.Services.UserAccount/"]
 COPY ["Services/GShop.Services.Actions/GShop.Services.Actions.csproj", "Services/GShop.Services.Actions/"]
 COPY ["Services/GShop.Services.RabbitMq/GShop.Services.RabbitMq.csproj", "Services/GShop.Services.RabbitMq/"]
+COPY ["Services/GShop.Services.ContextAccess/GShop.Services.ContextAccess.csproj", "Services/GShop.Services.ContextAccess/"]
 COPY ["Services/GShop.Services.Gadgets/GShop.Services.Gadgets.csproj", "Services/GShop.Services.Gadgets/"]
+COPY ["Services/GShop.Services.Images/GShop.Services.Imagesss.csproj", "Services/GShop.Services.Images/"]
+COPY ["Services/GShop.Services.Likes/GShop.Services.Likes.csproj", "Services/GShop.Services.Likes/"]
 COPY ["Services/GShop.Services.Logger/GShop.Services.Logger.csproj", "Services/GShop.Services.Logger/"]
 COPY ["Systems/Api/Gshop.Api.Settings/Gshop.Api.Settings.csproj", "Systems/Api/Gshop.Api.Settings/"]
 RUN dotnet restore "./Systems/Api/GShop.api/./GShop.api.csproj"

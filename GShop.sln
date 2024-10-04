@@ -69,9 +69,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.EmailSender", "System
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.SmsSender", "Systems\Workers\GShop.SmsSender\GShop.SmsSender.csproj", "{D53184F5-EC67-41C5-8067-9B6621A5FE44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GShop.Services.Likes", "Services\GShop.Services.Likes\GShop.Services.Likes.csproj", "{E5349276-8F2E-4A60-8C6D-47B1F5B9CE7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Services.Likes", "Services\GShop.Services.Likes\GShop.Services.Likes.csproj", "{E5349276-8F2E-4A60-8C6D-47B1F5B9CE7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GShop.Services.ContextAccess", "Services\GShop.Services.ContextAccess\GShop.Services.ContextAccess.csproj", "{51164A84-FA0C-483C-8955-C3DF655FFC47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Services.ContextAccess", "Services\GShop.Services.ContextAccess\GShop.Services.ContextAccess.csproj", "{51164A84-FA0C-483C-8955-C3DF655FFC47}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GShop.Services.Imagesss", "Services\GShop.Services.Images\GShop.Services.Imagesss.csproj", "{F02C7C6D-E24E-4FA2-BA07-8FD0AE63F53C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -159,6 +161,10 @@ Global
 		{51164A84-FA0C-483C-8955-C3DF655FFC47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51164A84-FA0C-483C-8955-C3DF655FFC47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51164A84-FA0C-483C-8955-C3DF655FFC47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F02C7C6D-E24E-4FA2-BA07-8FD0AE63F53C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F02C7C6D-E24E-4FA2-BA07-8FD0AE63F53C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F02C7C6D-E24E-4FA2-BA07-8FD0AE63F53C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F02C7C6D-E24E-4FA2-BA07-8FD0AE63F53C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -190,6 +196,7 @@ Global
 		{D53184F5-EC67-41C5-8067-9B6621A5FE44} = {22EAA0D2-BD8D-4839-B809-BA8E593762CD}
 		{E5349276-8F2E-4A60-8C6D-47B1F5B9CE7F} = {2171B9DA-8C62-46DC-9C32-3D18A1A7E896}
 		{51164A84-FA0C-483C-8955-C3DF655FFC47} = {2171B9DA-8C62-46DC-9C32-3D18A1A7E896}
+		{F02C7C6D-E24E-4FA2-BA07-8FD0AE63F53C} = {2171B9DA-8C62-46DC-9C32-3D18A1A7E896}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {24715852-D898-4D93-BFBE-C2FB244DE7E4}

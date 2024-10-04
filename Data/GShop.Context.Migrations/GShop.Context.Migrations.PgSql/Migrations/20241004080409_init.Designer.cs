@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GShop.Context.Migrations.PgSql.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    [Migration("20240930131220_init")]
+    [Migration("20241004080409_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Proxies:ChangeTracking", false)
                 .HasAnnotation("Proxies:CheckEquality", false)
                 .HasAnnotation("Proxies:LazyLoading", true)
@@ -144,9 +144,15 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                         .IsRequired()
                         .HasColumnType("bytea");
 
+                    b.Property<Guid>("Uid")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
 
                     b.HasIndex("GadgetId");
+
+                    b.HasIndex("Uid")
+                        .IsUnique();
 
                     b.ToTable("gadget_images", (string)null);
                 });
@@ -292,8 +298,8 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
 
-                    b.Property<int>("GadgetId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("GadgetId")
+                        .HasColumnType("uuid");
 
                     b.Property<int>("Rating")
                         .HasColumnType("integer");
@@ -639,6 +645,7 @@ namespace GShop.Context.Migrations.PgSql.Migrations
                     b.HasOne("GShop.Context.Entities.Gadget", "Gadget")
                         .WithMany("Reviews")
                         .HasForeignKey("GadgetId")
+                        .HasPrincipalKey("Uid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -10,6 +10,7 @@ using GShop.Services.Actions;
 using GShop.Services.UserAccount;
 using GShop.Services.ContextAccess;
 using GShop.Services.Likes;
+using GShop.Services.Images;
 
 public static class Bootstrapper
 {
@@ -30,6 +31,7 @@ public static class Bootstrapper
             .AddUserAccountService()
             .AddContextAccessService()
             .AddLikeService()
+            .AddImageService()
             ;
             
 
